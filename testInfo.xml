@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suites>
+<suite name="Suite" parallel="false">
+    <!-- 初始化的准备工作-->
+    <parameter name="selenium.host" value="172.20.23.95"/>
+    <parameter name="selenium.port" value="4444"/>
+    <parameter name="selenium.browser" value="*firefox"/>
+    <!--parameter name="selenium.url" value="http://search.10jqka.com.cn/"-->
+  <test name="Test">
+    <!--信息页面-->  
+    <!--parameter name="sOpenUrl" value="http://search.10jqka.com.cn/?tid=info&amp;ts=1&amp;qs=1"/-->
+    <parameter name="sInput.locate" value="//*[@id='auto']"/>
+    <parameter name="sSearchButton.locate" value="//*[@class='searchbtn']"/>
+    <parameter name="sInputValue_1" value="同花顺"/>
+    <parameter name="ALLlook.locate" value="//*[@id='reshuffleAllLink']"/>
+    <!--首页异动数据-->
+    <parameter name="sYestAfter.locate" value="//html/body/div[2]/div[3]/div/div[2]/div/table/tbody/"/>
+    <parameter name="sYestNight.locate" value="//html/body/div[2]/div[3]/div/div[2]/div[2]/table/tbody/"/>
+    <parameter name="sTodaMorni.locate" value="//html/body/div[2]/div[3]/div/div[2]/div[3]/table/tbody/"/>
+    <parameter name="sTodaNew.locate" value="//html/body/div[2]/div[3]/div/div[2]/div[4]/table/tbody/"/>
+    
+    <!--异动数据名称栏-->
+    <parameter name="sYidongTitle.locate" value="//html/body/div[2]/div[3]/div/div/ul/"/>
+                                                
+    
+    <!--今日新闻排行-->
+    <parameter name="sNew.locate" value="//html/body/div[2]/div[3]/div[2]/div/ul/"/>
+    
+    <!--一次查询后返回股票名称的XPATH和期望值-->
+    <parameter name="sActualValue.locate" value="//html/body/div[2]/div/div/div[2]/h2"/>
+    <parameter name="sExpectValue.locate" value="同花顺（300033） 个股资料"/>
+    <parameter name="sStockhref.locate" value="//html/body/div[2]/div/div/div[2]/h2/a@href"/>
+    
+    <!--点击查看全部后的相关XPATH-->
+    <parameter name="Jumptitle.locate" value="//html/body/div/div/div[2]/div/ul/"/>
+    <parameter name="FirstStock.locate" value="//html/body/div/div/div[2]/div[2]/div["/>
+    <parameter name="Jumpvalue.locate" value="//html/body/div/div/div[2]/div[2]/div["/>
+    
+    <classes>
+      <class name="MyInfo.info"/>
+        <methods>
+            <include name="testYidongInfo"/>
+             <include name="testAbnormalNews"/>
+             <include name="testNewsRank"/>
+             <include name="testAllRank"/>
+             <include name="testQueryResult"/>
+        </methods>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
+</suites>

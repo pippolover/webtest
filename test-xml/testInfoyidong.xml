@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suites>
+    <suite name="yidongSuite" parallel="false">
+        <!-- 初始化的准备工作-->
+        <parameter name="selenium.host" value="172.20.23.95"/>
+        <parameter name="selenium.port" value="4444"/>
+        <parameter name="selenium.browser" value="*firefox"/>
+  <!--   <parameter name="selenium.url" value="http://search.10jqka.com.cn/"/> -->
+        <test name="Test" preserve-order="true">
+            <!--信息页面-->
+            <parameter name="selenium.info" value="/?tid=info&amp;ts=1&amp;qs=1"/>
+            <parameter name="sInput.locate" value="//*[@id='auto']"/>
+            <parameter name="sSearchButton.locate" value="//*[@class='search_btn']"/>
+            <parameter name="sInputValue_1" value="同花顺"/>
+            <parameter name="ALLlook.locate" value="//*[@id='reshuffleAllLink']@href"/>
+            <!--首页异动数据-->
+            <parameter name="sYIdong_1.locate" value="//*[@id='mcontent']/div[1]/div[2]/div[1]/table/tbody/"/>
+            <parameter name="sYIdong_2.locate" value="//*[@id='mcontent']/div[1]/div[2]/div[2]/table/tbody/"/>
+            <parameter name="sYIdong_3.locate" value="//*[@id='mcontent']/div[1]/div[2]/div[3]/table/tbody/"/>
+            <parameter name="sYIdong_4.locate" value="//*[@id='mcontent']/div[1]/div[2]/div[4]/table/tbody/"/>
+            <parameter name="sYIdong1_samexpath.locate" value="//tr[@type='0']"/>
+            <parameter name="sYIdong2_samexpath.locate" value="//tr[@type='1']"/>
+            <parameter name="sYIdong3_samexpath.locate" value="//tr[@type='2']"/>
+            <parameter name="sYIdong4_samexpath.locate" value="//tr[@type='3']"/>
+            <!--异动数据名称栏-->
+            <parameter name="sYidongTitle.locate" value="//*[@id='mcontent']/div[1]/div[1]/ul/"/>
+
+            <!--首页打开第一个展示的异动消息相关xpath-->
+            <parameter name="sFullTitle.locate" value="//*[@id='abstocknews']//*[@class='enabled']@fulltitle"/>
+            <parameter name="sThiredtitle.locate" value="//*[@id='abstocknews']//*[@class='enabled']//*[@class='title_main']"/>
+
+            <!--点击查看全部后的相关XPATH-->
+            <!-- <parameter name="Jumptitle.locate" value="//*[@id='fengyunbang']/div[2]/div[1]/ul/"/>
+            <parameter name="FirstStock.locate" value="//*[@id='fengyunbang']/div[2]/div[2]/div["/>
+            <parameter name="Jumpvalue.locate" value="//*[@id='fengyunbang']/div[2]/div[2]/div["/>  -->
+
+            <!--点击查看全部后的相关XPATH-->
+            <parameter name="Jumptitle.locate" value="//html/body/div[3]/div[1]/ul/li[3]/span[2]"/>
+
+            <!--走势图相关xpath-->
+            <parameter name="Chart.locate" value="//span[@id='flashtag']"/>
+            <parameter name="clickbtn.locate" value="//a[@id='showflash']"/>
+            <classes>
+                <class name="com.myhexin.testInfoyidong"/>
+                <methods>
+                    <include name="test_Thirdyidong_isfirst"/>
+                    <include name="test_Yidongnum"/>
+                    <include name="testYidongInfo"/>
+                    <include name="testisnotNum"/>
+                    <include name="testAbnormalNews"/>
+                    <include name="testAllRank"/>
+
+                </methods>
+            </classes>
+        </test> <!-- Test -->
+    </suite> <!-- Suite -->
+</suites>

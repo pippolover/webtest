@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="testminipopSuite" parallel="tests" Thread-count="2">
+    <parameter name="selenium.host" value="172.20.23.95" />
+    <parameter name="selenium.port" value="4444" />
+    <parameter name="selenium.browser" value="*firefox" />
+<!--  <parameter name="selenium.url" value="http://search.10jqka.com.cn" /> -->
+    <test name="testminipop" preserve-order="true" >
+    
+    
+    
+     <!--testAuto-->
+     <!--测试minipop的输入框存不存在-->
+     <parameter name="minipopurl" value="/stockpick/minipop"/>
+     <parameter name="auto"  value="//*[@id='auto']"/>
+     
+     
+     <!--testTageCount-->
+     <!--判断标签句是12句-->
+     <parameter name="target"  value="//html/body/div[1]/div[1]/div/ul/li/a"/>
+
+    <!--testLogoLink-->
+    <!--点击LOGO跳转搜牛选股页-->
+     <parameter name="logolink"  value="//*[@id='minilogo']"/>
+ 
+   <!--testMRWJ-->
+   <!--打开minipop，点击默认问句的执行选股，看没有跳转问句页-->
+    <parameter name="morenwenju"  value="//*[@id='auto']@messageval"/>
+   
+   <!--testFirstTaget-->
+   <!--点击第一个标签句没有跳转到它的选股页-->
+    <parameter name="firsttaget"  value="//html/body/div[1]/div[1]/div[1]/ul/li[1]/a"/>
+
+   <!--testSearchQuery-->
+   <!--搜索一个问句没有跳转到它的选股页-->
+   <parameter name="query" value="股价大于等于9元"/>
+   <parameter name="searchbtn" value="//*[@id='searchform']/div[3]/input"/>
+
+   <!--testClinkXuanNiuGu-->
+   <!-- 点击选牛股方案1有没有跳转到网站页面-->  
+   <parameter name="niugu1" value="//*[@id='plan_area']/li[1]/h4/a"/>
+     <parameter name="xuanniugu" value="//*[@id='plan_area']/li[1]/a"/>
+    
+    <!--  testLinkPlaneMore -->
+    <!-- 点击更多方案有没有跳转到搜牛A版首页 -->
+    <parameter name="gendoufanan" value="//*[@id='moreplan']"/>
+     
+    <classes>
+        <class name="com.myhexin.testminipop"/>
+        <methods>
+        	<include name="testAuto"/>
+          <!--   <include name="testTageCount"/> -->
+            <include name="testLogoLink"/>
+            <include name="testMRWJ"/>
+        <!--     <include name="testFirstTaget"/>  -->
+            <include name="testSearchQuery"/> 
+          <!--   <include name="testClinkXuanNiuGu"/> -->
+          <!--   <include name="testLinkPlaneMore"/> -->
+    </methods>
+        </classes>
+    </test> <!-- Test -->
+</suite> <!-- Suite -->

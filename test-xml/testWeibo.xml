@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<suites>
+<suite name="weiboSuite" parallel="false">
+    <!-- 初始化的准备工作-->
+    <parameter name="selenium.host" value="172.20.23.95"/>
+    <parameter name="selenium.port" value="4444"/>
+    <parameter name="selenium.browser" value="*firefox"/>
+    <!-- <parameter name="selenium.url" value="http://search.10jqka.com.cn/"/>  -->
+    
+     
+    
+  <test name="test_weibo" preserve-order="true">
+  
+   <!-- test_jigou -->
+    <!-- 进入微博首页,点击机构,看是否跳转-->
+      <parameter name="openUrl" value="/"/>
+      <parameter name="weibo" value="//*[@id='weibo_bar']/a" />
+      <parameter name="jigou" value="//*[@id='4']"/>
+      <parameter name="jigoucount" value="//*[@class='weibo_bt']"/>
+      
+      <parameter name="Author" value="//*[@id='weibocontent_%d']/dd[1]/p[1]/a"/>
+      
+    <!-- test_jiepanCount --> 
+    <!--判断解盘微博显示的是不是30条 --> 
+    <parameter name="jiepan" value="//*[@id='1']"/>
+    
+      <parameter name="jiepancount" value="//*[@class='weibo_bt']"/>
+      
+     <!-- test_sourceJp -->  
+    <!-- 判断解盘微博来源-->
+     <parameter name="newxpath_source" value="//*[@id='weibocontent_%d']/dd[1]/p[2]"/>
+      
+    <!-- test_authorJp -->  
+    <!-- 判断解盘微博作者重复-->
+                                                   
+      <!-- test_authorMessage -->
+   <!-- 判断鼠标移动到解盘微博每一个标题的作者(博客名)上时,有没有显示作者信息 -->
+   
+     <parameter name="authorMessage" value="//*[@id='weibocontent_%d']/dt/div/div/div/table/tbody/tr/td/div/div/dl/dd/p[1]/a"/>
+     
+        <!-- test_Linkauthor_jipan -->  
+   <!-- 点击解盘微博中的博主名,进入博主的微博页 -->
+     <parameter name="author_jipan" value="//*[@id='weibocontent_0']/dd[1]/p[1]/a"/>
+         
+       <!-- test_weiboLink -->  
+   <!-- 鼠标移动到微博博主名上，点击博主名，是否跳转到新浪微博主页-->
+  
+     <parameter name="sinaWeibo_author" value="//*[@id='weibocontent_0']/dt/div/div/div/table/tbody/tr/td/div/div/p[1]/a"/>
+    
+      <!-- test_result -->
+      <parameter name="result" value="//*[@id='weibocontent_0']/dd[1]/p[1]/a"/>
+     
+      <!-- test_resultgb -->
+      <parameter name="resultgb" value="//html/body/div[3]/div[1]/ul/li[1]/span"/>
+      
+    <!-- test_weiboLogo -->
+    <!-- 点击微博的LOGO,查看是否真的到了微博首面 -->  
+      <parameter name="logo" value="//*[@id='topnavCon']/div/a"/> 
+      <parameter name="zhuyecount" value="//html/body/div[3]/div/ul/form/li[1]"/>
+      
+   <!-- test_weibologin -->  
+    <!-- 点击搜牛微博的登录,查看是不是到同花顺用户登录面 --> 
+     <parameter name="login" value="//*[@id='topbarCon']/a[1]"/>  
+ 
+    <classes>
+      <class name="com.myhexin.testWeibo"/>
+        <methods>
+            <include name="test_jigou"/>
+            <include name="test_jipanCount"/>
+            <include name="test_sourceJp"/>
+            <include name="test_authorJp"/>
+            <include name="test_authorMessage"/>
+            <include name="test_Linkauthor_jipan"/>
+            <include name="test_weiboLink"/>
+            <include name="test_result"/>
+            <include name="test_resultgb"/>
+            <include name="test_weiboLogo"/> 
+            <include name="test_weibologin"/>
+                                                             
+        </methods>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
+</suites>

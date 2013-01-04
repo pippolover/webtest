@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suites>
+    <suite name="InfotriggerSuite" parallel="false">
+        <!-- 初始化的准备工作-->
+        <parameter name="selenium.host" value="172.20.23.95"/>
+        <parameter name="selenium.port" value="4444"/>
+        <parameter name="selenium.browser" value="*firefox"/>
+<!--  <parameter name="selenium.url" value="http://search.10jqka.com.cn"/> -->
+        <test name="Test" preserve-order="true">
+
+            <!--信息页面-->
+
+            <parameter name="selenium.info" value="/?tid=info&amp;ts=1&amp;qs=1"/>
+            <parameter name="sInput.locate" value="//*[@id='auto']"/>
+            <parameter name="sSearchButton.locate" value="//*[@class='search_btn']"/>
+            <parameter name="sInputValue_1" value="同花顺"/>
+            <parameter name="ALLlook.locate" value="//*[@id='reshuffleAllLink']"/>
+
+            <!--今日新闻排行-->
+            <parameter name="sNew.locate" value="//*[@id='sortul']"/>
+
+            <!--一查询普通股票名称的XPATH和期望值-->
+            <parameter name="sActualValue.locate" value="//*[@id='flash']/h2/span"/>
+            <parameter name="sExpectValue.locate" value="同花顺（300033）"/>
+            <parameter name="sStockhref.locate" value="//*[@id='flash']/h2/a@href"/>
+
+            <!--首页微博的相关XPATH-->
+            <parameter name="WeiboSamexpath.locate" value="//div[@class='weibotext']"/>
+
+            <!--概念股相关题材搜索-->
+            <parameter name="ConceptStock" value="石墨烯"/>
+            <parameter name="Stocknum.xpath" value="//*[@id='hidelist']/div[7]"/>
+
+            <!--走势图相关xpath-->
+            <parameter name="Chart.locate" value="//*[@id='showflash']@class"/>
+
+            <!--定义百科相关xpath-->
+            <parameter name="wikiname.locate" value="//*[@id='luate_452dc38c8d406f1']/h2/font[1]"/>
+
+            <!--牛叉诊股相关xpath-->
+            <parameter name="niucha.locate" value="//*[@id='zg_url_title']"/>
+            <parameter name="niuchaHref.locate" value="//*[@id='zg_url_title']@href"/>
+
+            <!--当股票术语时候的数据探索-->
+            <parameter name="Flashbar.locate" value="//*[@id='YFZGXCFlashBar']"/>
+            <parameter name="Flashstock.locate" value="//*[@id='YFZGXCAbstock']"/>
+
+            <!--测试热点人物的事件追踪-->
+            <parameter name="EventTraceExist.locate" value="//*[@id='search_trace_con']/div"/>
+            <parameter name="Flashgoin.locate" value="//a[@class='goin']"/>
+            <parameter name="Eventnum.locate" value="//li[@class='item']"/>
+            <parameter name="Flashgoinxinj.locate" value="//a[@class='goinxinj']"/>
+            <!--判断ajax请求是否返回正确-->
+            <parameter name="ajaxurl.locate" value="/ajax_words?searchSuggest6"/>
+            
+            <!--test_PubnoteSearch-->
+            <parameter name="firstpubnote" value="//*[@id='hidelist']/div[5]/ul/li[1]/a"/>
+            
+            <!--test_ReportSearch-->
+            <parameter name="firstreport" value="//*[@id='hidelist']/div[13]/ul/li[1]/a"/>
+            
+            <classes>
+                <class name="com.myhexin.testInfotrigger"/>
+                <methods>
+                   <include name="test_Ajax"/>
+                    <include name="testNewsRank"/>
+                    <include name="testQueryResult"/>
+                    <include name="test_trendChart"/>
+                    <include name="test_ConceptStock"/>
+                    <include name="test_Definewiki"/>
+                    <include name="test_DiagnoseStock"/>
+                    <include name="test_dataSearch"/>
+                    <include name="test_EventTrack"/>
+                    <include name="test_PubnoteSearch"/>
+                    <include name="test_ReportSearch"/>
+                    
+                  
+                </methods>
+            </classes>
+        </test> <!-- Test -->
+    </suite> <!-- Suite -->
+</suites>

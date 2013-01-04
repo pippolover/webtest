@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suites>
+    <suite name="UIlocation_WeiboSuite" parallel="false">
+        <!-- 初始化的准备工作-->
+        <parameter name="selenium.host" value="172.20.23.95"/>
+        <parameter name="selenium.port" value="4444"/>
+        <parameter name="selenium.browser" value="*firefox"/>
+    <!--     <parameter name="selenium.url" value="http://search.10jqka.com.cn/"/> -->
+       
+
+
+       <!-- testweiboIndex_jiepan -->
+       <!-- 微博首页解盘 -->
+       <parameter name="testweiboIndex_jiepan" value="//*[@id='weibof']/li[1]" />
+       <parameter name="testweiboIndex_jiepan_top" value="134" />
+       <parameter name="testweiboIndex_jiepan_left" value="343" />
+  
+         <test name="testUIlocation_Weibo" preserve-order="true">
+            <classes>
+                <class name="com.myhexin.testUIlocation_Weibo"/>
+                <methods>
+                    <include name="testweiboIndex_jiepan"/>
+                    
+
+                </methods>
+            </classes>
+           </test>
+        
+    </suite> <!-- Suite -->
+</suites>

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="OntologySuite" parallel="tests" Thread-count="2">
+     <parameter name="selenium.host" value="172.20.23.95" />
+     <parameter name="selenium.port" value="4444" />
+     <parameter name="selenium.browser" value="*iexplore" />
+   <!-- <parameter name="selenium.url" value="http://search.10jqka.com.cn/" />  -->
+     <test name="testOntology" preserve-order="true" >
+        <parameter name="openUrl" value="stockpick?tid=stockpick" />
+        <parameter name="queryInputId" value="id=auto" />
+        <parameter name="bottomqueryInput" value="//*[@class='stockpick_foot_search']/form/div/input" />
+        <parameter name="searchbtn" value="css=input.search_btn" />
+        
+        <!-- testCommonQuery -->
+        <parameter name="CommonQuery_stock1" value="//*[@id='offtblbdy']/tr[1]/td[3]" />
+        <parameter name="CommonQuery_stock2" value="//*[@id='offtblbdy']/tr[2]/td[3]" />
+        <parameter name="CommonQuery_stock3" value="//*[@id='offtblbdy']/tr[3]/td[3]" />
+        
+        <!-- 搜索员工 -->
+        <parameter name="Employee_Query" value="员工人数最多的公司"/>
+        <parameter name="Employee_Query2" value="资产"/>
+        <parameter name="Employee_want_word" value="//*[@id=‘searchform’]/sapn"/>
+        
+                                                    
+        <parameter name="Employee_want_firstRecord" value="//*[@id='auto']@value"/>
+        
+        <!-- 测试历史数据 -->
+        <parameter name="History_Frame" value="//*[@id='hisQuesList']/li/a"/>
+        <parameter name="History_LatestRecord" value="//*[@id='historyList']/div[2]/ol/li[1]/a"/>
+                                               
+       
+        <parameter name="History_Clear" value="//*[@id='del_allHisQues']"/>
+        
+        <!-- 测试问句详情 -->
+        <parameter name="Viewdetails" value="//*[@id='remind_btn']"/>
+        
+        <parameter name="Viewdetails2" value="//*[@class='remind_word']/em"/>
+                                             
+                                            
+                                              
+                                                
+        
+        <!-- 测试问句详情 -->
+        <parameter name="Condition_combination_tips" value="//html/body/div[8]/div/div[2]/p/span[3]"/>
+        <parameter name="Condition_combination_Content" value="//*[@id='qusetion_remind']@style"/>
+        
+        <!-- testQuestionAnalysis_baogao -->
+        <parameter name="QuestionAnalysis_baogao" value="//*[@id='similarCon']/p/div/a"/>
+  
+        <!-- testQuestionAnalysis_ChangeConditions -->
+
+        <parameter name="QuestionAnalysis_condComp00" value="//*[@id='condComp_0_0']/div[2]/input"/>
+                                                            
+        <parameter name="QuestionAnalysis_qinfoForm" value="//*[@id='qinfoForm']/div[2]/a"/>
+        
+
+        <parameter name="QuestionAnalysis_Stocknum" value="//*[@id='r_num_box']/span/em[1]"/>
+        
+        <!-- testQuestionAnalysis_Add_cond -->
+        <parameter name="Add_cond_btn" value="//*[@id='add_cond_btn']"/>
+        <parameter name="Add_cond_insearch" value="//*[@id='insearch_key']"/>
+        <parameter name="Add_cond_inserchbtn" value="//*[@id='insearch_btn']"/>
+        <parameter name="Add_cond_result" value="//*[@id='gostockpage']"/>
+        
+        <!-- 测试剔除ST股 -->
+        <parameter name="DEststock_btn" value="//*[@id='main_filter']/li[2]"/>
+                                               
+        
+    
+        <parameter name="DEststock_intro" value="//*[@id='r_num_box']/span/em[1]"/>
+        
+       
+        
+        <!-- 测试剔除停牌股-->
+        <parameter name="DEtinpaistocks_btn" value="//*[@id='main_filter']/li[3]"/>
+        <parameter name="DEtinpaistocks_intro" value="//*[@id='r_num_box']/span/em[1]"/>
+        
+         <!-- 测试研报股-->
+        <parameter name="Reportstocks_btn" value="//*[@id='main_filter']/li[4]"/>
+        <parameter name="Reportstocks_intro" value="//*[@id='r_num_box']/span/em[1]"/>
+       
+        <!--  测试指标股 -->
+        <parameter name="Indexstocks_btn" value="//*[@id='main_filter']/li[5]"/>
+        <parameter name="Indexstocks_intro" value="//*[@id='r_num_box']/span/em[1]"/>  
+             
+        <!--股价跌幅最大 -->
+        <parameter name="Conditionalcontent" value="//*[@id='condComp_0_0']/div/input" />
+        
+         <!-- 正确错误按钮点击后灰掉-->
+        <parameter name="goodBtn.xpath" value="class=good_pick pick_btn" />
+        <parameter name="goodBtnGray.xpath" value="//*[@id='btn_layer_2']/div[2]/div[1]/span[2]" />
+        <parameter name="badBtnGray.xpath" value="//*[@id='btn_layer_2']/div[2]/div[1]/span[3]" />
+        
+        <!-- 反馈链接xpath-->
+        <parameter name="feedbackLink.xpath" value="id=rightFeedbackBar" />
+        <parameter name="feedbackbbs.xpath" value="//*[@id='gobbs1']@href" />
+        <parameter name="suggest.xpath" value="id=suggestion" />
+        <parameter name="contact.xpath" value="name=qq" />
+        <parameter name="name.xpath" value="name=name" />
+        <parameter name="feedbackSubmit.xpath" value="id=fbSubmit" />
+        <parameter name="feedbackOver.xpath" value="id=rightFeedbackBar" />
+        
+        <!-- bbs 链接xpath -->
+        <parameter name="bbsLink.xpath" value="//*[@id='gobbs2']@href" />
+        
+        <!-- testLoginwindow -->
+        <parameter name="Login_Query" value="智能电网概念"/>                                     
+        <parameter name="Login_windowstitle" value="//*[@id='btn_save_selfstock']"/>
+        
+        <parameter name="Login_closewindow" value="//*[@class='wBox_title']/tbody/tr/td[2]/div"/>
+                                                   
+        <!-- 测试问句收藏-->
+        <parameter name="QuestionCollection_btn" value="//*[@id='favorit_btn']"/>
+        <parameter name="QuestionCollection_Number" value="//*[@id='q_collect']/em"/>
+         <!-- 删除收藏问句 -->
+         <parameter name="QuestionCollection_Clear" value="//*[@id='favorit_btn']"/>
+         
+         <!-- 测试股票超链接 -->
+         <!-- 选股查询结果页面，第一支股票的股票代码和超链接的打开地址  -->
+        <parameter name="linkStockCode.xpath" value="//*[@id='offtblbdy']/tr[1]/td[2]/span" />
+        <parameter name="stockLinkUrl.xpath" value="//*[@id='gostockpage']@href" />
+      
+         
+         <!--测试调查问卷，我要参与 -->
+        <parameter name="stockpick_interview_link" value="//*[@id='stockpick_interview_link']" />
+        <parameter name="stockpick_interview_Chart" value="//*[@id='stockpick_daocha_link']" />
+        
+        <classes>
+            <class name="com.myhexin.testOntology"/>
+            <methods>
+                     <include name="testEmployee"/>
+	                <include name="testEmployee2"/>
+	                <include name="testHistoryQuestion"/>
+	                <include name="testClearHistory"/>
+	                <include name="testViewdetails"/>
+                <include name="testCondition_combination_tips"/>
+                <include name="testQuestionAnalysis_baogao"/>
+                <include name="testQuestionAnalysis_ChangeConditions"/>
+                <include name="testQuestionAnalysis_Add_cond"/>
+                
+                <include name="testLargestdecline"/>
+	            <include name="testDEststock"/>
+	            <include name="testDEtinpaistocks"/>
+	         <!--    <include name="testReportstocks"/>
+	            <include name="testIndexstocks"/> -->
+	            <include name="testBtnGray"/>
+	               <include name="testLoginwindow"/>
+	               <include name="testQuestionCollection"/>
+	               <include name="testQuestionCollection_Clear"/>
+	               <include name="testStockLinkAdd"/>
+	             <!--   <include name="teststockpick_interview"/> -->
+	               <include name="testStockLink"/>
+	               <!--include name="testBbsLink"/-->
+	               <!-- 搜索‘短期超卖，股价大于4’的时候没有结果了 -->
+	               <!-- <include name="testAddConditions_SearchResult"/> -->
+            </methods>
+        </classes>
+    </test> <!-- Test -->
+</suite> <!-- Suite -->

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="TestbugfreeSuite" parallel="tests" Thread-count="2">
+    <parameter name="selenium.host" value="172.20.23.95" />
+    <parameter name="selenium.port" value="4444" />
+    <parameter name="selenium.browser" value="*firefox" />
+<!--  <parameter name="selenium.url" value="http://search.10jqka.com.cn/" />  -->
+    
+    <!-- 初始xpath,包括打开网址，输入栏和提交栏的地址 -->
+    <parameter name="openUrl_ontology" value="stockpick?tid=stockpick" />
+    <parameter name="openUrl_info" value="/?tid=info&amp;ts=1&amp;qs=1" />
+    <parameter name="queryInputId" value="id=auto" ></parameter>
+    <parameter name="bottomqueryInput" value="//*[@class='stockpick_foot_search']/form/div/input" />
+    <parameter name="searchbtn" value="css=input.search_btn" />
+    <parameter name="bottomSearchbtn" value="//*[@class='stockpick_foot_search']/form/input[6]" />
+    <!-- testFormhotconcept -->
+    <parameter name="FirstConcept" value="//*[@id='offtblbdy']/tr[16]/td[2]/a"/>
+    <parameter name="CodelinktoStock" value="//*[@id='offtblbdy']/tr[16]/td[2]/a@href"/>
+    
+    <!-- testDaysIsRounded -->
+    <parameter name="QueryDay" value="连涨天数大于5天的股票"/>
+    <parameter name="FirstRecord" value="//*[@id='offtblbdy']/tr/td[3]"/>
+                                         
+    <!-- testNextPage -->
+    <parameter name="Nextpage.xpath" value="//*[@id='right_page_bar']/span[2]"/>
+    <parameter name="SecondPage.xpath" value="//*[@id='pageBar']/a[4]"/>
+    <!-- testResultOfConceptFormat -->
+    <parameter name="QueryConcept" value="智能电网概念"/>
+    <parameter name="ConceptResult.xpath" value="//*[@id='offtblbdy']/tr[1]/td[4]/span"/>
+  
+    <!-- testIndexconditions -->
+    <parameter name="BetaXpath" value="//*[@id='condComp_0_0']/div/select"/>
+                                      
+    <parameter name="AndXpath" value="//*[@id='condComp_0_1']/div/select"/>
+    <!-- testClickXingKongTuconcepts_And_directSearchconcept -->
+    <parameter name="stockNum" value="//*[@id='r_num_box']/span/em[1]"/>
+                                      
+    <!-- 测试返回结果数量巨大时候 -->
+    <parameter name ="QueryBigResult" value="大股东里有王"/>
+ 
+
+    <!-- testSpecialCharacters -->
+    <parameter name ="Errormessage" value="选股无结果（建议您：看看是不是输入的文字出错了）"/>
+    <parameter name ="Errormessage.xpath" value="//html/body/div[1]/div[1]/div[3]/div/div[1]/div[3]"/>
+   
+                                                 
+
+    <!-- testTablesort -->
+    <parameter name ="rank" value="//*[@id='offtblbdy']/tr/td[2]/span"/>
+    <parameter name ="rank_aftersort" value="//*[@id='offtblbdy']/tr[1]/td[2]"/>
+    <parameter name ="sort_btn" value="//*[@id='sortTable']/thead/tr/th[3]/span"/>
+
+
+    <!-- testAnalysisIncludedUnit -->
+    <parameter name ="result" value="//*[@id='condComp_0_0']/div[2]/span"/>
+    <!-- testSTstock -->
+    <parameter name ="errormsg.xpath" value="//*[@id='btn_layer_3']"/>
+    <!-- 解禁股票查询 -->
+    <parameter name="erromsg.xpath" value="//html/body/div[3]/p"/>
+
+    <!-- testEquityunit -->
+    <parameter name="elemvalue.xpath" value="//*[@id='AGZGBInfo']/dl/dt"/>
+    
+    <test name="TestOntology_bugfree" preserve-order="true">
+        <classes>
+            <class name="com.myhexin.testBugfree_ontology"/>
+            <methods>
+                <include name="testIndexconditions"/>
+                <include name="testResultOfConceptFormat"/>
+                <!--<include name="testDaysIsRounded"/>-->
+                <include name="testResultsInLarge"/>
+                <include name="testSpecialCharacters"/>
+                <!-- 排名的标签被取消了 -->
+                <!-- <include name="testTablesort"/> -->
+                <include name="testAnalysisIncludedUnit"/>
+                
+                <!-- <include name="testSTstock"/> -->
+                <include name="testLiftedstock" />
+            </methods>
+        </classes>
+    </test> <!-- Test -->
+
+</suite> <!-- Suite -->

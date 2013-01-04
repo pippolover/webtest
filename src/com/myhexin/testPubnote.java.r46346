@@ -1,0 +1,246 @@
+package com.myhexin;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import com.myhexin.common.UIMessage;
+import com.myhexin.common.WebDriverBackedSeleniumWrapper;
+import com.myhexin.common.util;
+import com.thoughtworks.selenium.DefaultSelenium;
+import com.thoughtworks.selenium.Selenium;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverBackedSelenium;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.annotations.Test;
+import org.testng.annotations.Parameters;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.AfterTest;
+import static com.myhexin.common.Assert.*;
+/**
+ * @author Administrator
+ *
+ */
+public class testPubnote {
+	public static final String TIMEOUT = "30000";
+	private util ut;
+	private static WebDriver driver;	
+	private WebDriverBackedSeleniumWrapper sel;
+
+	/**
+	 * @param openUrl
+	 * @param inputId
+	 * @param query3
+	 * @param searchbtn
+	 * @param linkxpath1
+	 * @param titlexpath3
+	 * @param keywordquery1
+	 * @throws Exception 
+	 */
+	@UIMessage(description = "")@Test
+	@Parameters({ "openUrl", "queryInputId", "query3", "searchbtn",
+			"linkxpath1", "title.text3", "keywordquery1" })
+	public void testFunds(String openUrl, String inputId, String query3,
+			String searchbtn, String linkxpath1, String titlexpath3,
+			String keywordquery1) throws Exception {
+		System.out.println("testing testFunds");
+		sel.open(openUrl);
+		sel.windowMaximize();
+		ut.QueryResult(sel,query3);
+		Thread.sleep(3000);
+		sel.click(linkxpath1);
+		Thread.sleep(2000);
+		System.out.println(sel.getTitle());
+		String title_text3 = sel.getText(titlexpath3);
+		System.out.println(title_text3);
+		AssertTrue(driver,title_text3.contains(keywordquery1));
+
+	}
+
+	/**
+	 * @param linkxpath2
+	 * @param titlexpath4
+	 * @param keywordquery
+	 */
+	@UIMessage(description = "")@Test
+	@Parameters({ "link.xpath2", "title.text4", "keywordquery" })
+	public void testClinkGuangGu(String linkxpath2, String titlexpath4,
+			String keywordquery) {
+		System.out.println("testing ClinkGuangGu");
+		sel.click(linkxpath2);
+		sel.waitForPageToLoad(TIMEOUT);
+		String title_text2 = sel.getText(titlexpath4);
+		System.out.println(sel.getTitle());
+		System.out.println(title_text2);
+		AssertTrue(driver,title_text2.contains("抱歉"));
+	}
+	
+	
+	/**
+	 * @param openUrl
+	 * @param inputId
+	 * @param query
+	 * @param searchbtn
+	 * @param xpath1
+	 * @param query2
+	 * @throws Exception 
+	 */
+	@UIMessage(description = "")@Test
+	@Parameters({ "openUrl", "queryInputId", "query", "searchbtn", "xpath1",
+			"query2" })
+	public void testQuerySearch(String openUrl, String inputId, String query,
+			String searchbtn, String xpath1, String query2) throws Exception {
+		System.out.println("testing QuerySearch");
+		ut.QueryResult(sel, query);
+		String title_text = sel.getText(xpath1);
+		System.out.println(sel.getTitle());
+		System.out.println(title_text);
+		AssertTrue(driver,title_text.contains(query2));
+
+	}
+
+	/**
+	 * @param linkxpath
+	 * @param titlexpath2
+	 * @param keywordquery
+	 * @throws Exception 
+	 */
+	@UIMessage(description = "")@Test
+	@Parameters({ "link.xpath", "title.text2", "keywordquery" })
+	public void testClinkZhaiQuan(String linkxpath, String titlexpath2,
+			String keywordquery) throws Exception {
+		System.out.println("testing ClinkZhaiQuan");
+		sel.click(linkxpath);
+		sel.waitForPageToLoad(TIMEOUT);
+		ut.QueryResult(sel, "600000 债券");
+		Thread.sleep(30000);
+		String title_text2 = sel.getText(titlexpath2);
+		System.out.println(sel.getTitle());
+		System.out.println(title_text2);
+		AssertTrue(driver,title_text2.contains(keywordquery));
+
+	}
+
+
+	/**
+	 * @param openUr2
+	 * @param inputId2
+	 * @param query1
+	 * @param searchbtn2
+	 * @param linkxpath3
+	 * @param xpath1
+	 * @param query2
+	 * @throws Exception 
+	 */
+	@UIMessage(description = "")@Test
+	@Parameters({ "openUrl2", "queryInputId2", "query1", "searchbtn2",
+			"link.xpath3", "xpath1", "query2" })
+	public void QuerySearch3(String openUrl2, String inputId2, String query1,
+			String searchbtn2, String linkxpath3, String xpath1, String query2) throws Exception {
+		System.out.println("testing QuerySearch3");
+		sel.open(openUrl2);
+		ut.QueryResult(sel,query1);
+		sel.click(linkxpath3);
+		String title_text = sel.getText(xpath1);
+		System.out.println(sel.getTitle());
+		System.out.println(title_text);
+		AssertTrue(driver,title_text.contains(query2));
+
+	}
+
+	/**
+	 * @param openUrl
+	 * @param inputId
+	 * @param query4
+	 * @param searchbtn
+	 * @param nextpage
+	 * @param titlexpath5
+	 * @param query5
+	 * @throws Exception 
+	 */
+	@UIMessage(description = "")@Test
+	@Parameters({"queryInputId", "query4", "searchbtn",
+			"nextpage.xpath", "title.text5", "query5" })
+	public void NextPage( String inputId, String query4,
+			String searchbtn, String nextpage, String titlexpath5, String query5) throws Exception {
+		System.out.println("testing NextPage");
+		ut.QueryResult(sel,query4);
+		sel.click(nextpage);
+		sel.waitForPageToLoad(TIMEOUT);
+		String title_text5 = sel.getText(titlexpath5);
+		// System.out.println(sel.getTitle());
+		System.out.println(title_text5);
+		AssertTrue(driver,title_text5.contains(query5));
+
+	}
+
+	/**
+	 * @param return_main
+	 * @param query6
+	 */
+	@UIMessage(description = "")@Test
+	@Parameters({ "return.main", "query6" })
+	public void ReturnToHome(String return_main, String query6) {
+		System.out.println("testing ReturnToHome");
+		sel.click(return_main);
+		sel.waitForPageToLoad(TIMEOUT);
+		System.out.println(sel.getTitle());
+		AssertEquals(driver,sel.getTitle(), query6);
+
+	}
+	
+	@UIMessage(description = "搜索首页点击公告，输公告，搜索 点击一天内 ，查看有无最新公告，点击第一条能不能打开")@Test
+	@Parameters({ "pubnote", "oneday","danrizuixin","firstpubnoto"})
+	public void oneDayPubnote(String pubnote, String oneday,String danrizuixin,String firstpubnoto) throws Exception {
+		System.out.println("oneDayPubnote");
+		sel.click(pubnote); //点击频道
+	    Thread.sleep(1000);
+	    ut.QueryResult(sel, "公告"); //搜索公告
+	    sel.click(oneday);
+	    Thread.sleep(1000);
+	    if (sel.isElementPresent(danrizuixin)) { 
+	    	String fp = sel.getText(firstpubnoto);
+	    	System.out.println(fp);
+	    	String[] fpArr = fp.split("\\.");
+	    	System.out.println(fpArr[0]);
+	    	sel.click(firstpubnoto);
+	    	for (String handle : driver.getWindowHandles()) {
+				driver.switchTo().window(handle);      //切换到新窗口
+				}
+	      Thread.sleep(2000);	
+		  System.out.println(sel.getTitle());
+		  AssertTrue(driver, sel.getTitle().contains(fpArr[0]),"判断点击的公告能不能打开");
+		  
+		}
+	    else {
+	    	AssertEquals(driver, 1,2, "公告一天内没有当日最新");
+		}
+	}
+
+	@BeforeTest
+	@Parameters({ "selenium.host", "selenium.port", "selenium.browser",
+			"selenium.url" })
+	public void beforeTest(String host, String port, String browser, String url) throws MalformedURLException {
+		System.out.println("Before test");
+		System.out.println(host);
+//		Integer Dport = Integer.parseInt(port);
+//		// sel = new DefaultSelenium("172.20.23.95", 4444, "*firefox",
+//		// "http://search.10jqka.com.cn/");
+//		sel = new DefaultSelenium(host, Dport, browser, url);
+		DesiredCapabilities capability = DesiredCapabilities.firefox();
+		driver = new RemoteWebDriver(new URL("http://172.20.23.95:4444/wd/hub"), capability);
+	    sel = new WebDriverBackedSeleniumWrapper(driver,url);
+		ut=new util();
+		sel.useXpathLibrary("javascript-xpath");
+		sel.setTimeout(TIMEOUT);
+
+	}
+
+	@AfterTest
+	public void afterTest() {
+		System.out.println("After test");
+		sel.stop();
+	}
+
+}

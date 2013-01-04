@@ -1,0 +1,193 @@
+package com.myhexin;
+
+//import static com.thoughtworks.selenium.grid.tools.ThreadSafeSeleniumSessionStorage.closeSeleniumSession;
+//import static com.thoughtworks.selenium.grid.tools.ThreadSafeSeleniumSessionStorage.session;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverBackedSelenium;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Parameters;
+import org.testng.annotations.Test;
+
+import com.myhexin.common.UIMessage;
+import com.myhexin.common.WebDriverBackedSeleniumWrapper;
+import com.myhexin.common.util;
+import com.thoughtworks.selenium.Selenium;
+import static com.myhexin.common.Assert.*;
+
+
+
+
+public class testNews {
+	public static final String TIMEOUT = "30000";
+	private static WebDriverBackedSeleniumWrapper sel;
+	private static WebDriver driver;
+	private static util ut;
+
+	// 返回结果第一条，重要新闻测试
+	/**
+	 * @param openurl
+	 * @param queryInput 
+	 * @param searchBth
+	 * @param newsSelectBtn
+	 * @param ImportantNewsXpath  重要新闻xpath
+	 * @throws InterruptedException 
+	 */
+	@UIMessage(description = "")@Test
+	@Parameters({ "selenium.newsUrl","queryInput.xpath", "searchbtn.xpath", "newsSelectBtn.xpath",
+			"ImportantNews.xpath" })
+	public void testImportantNews(String openurl,String queryInput, String searchBth,
+			String newsSelectBtn, String ImportantNewsXpath) throws InterruptedException {
+		System.out.println("testImportantNews");
+		String query = "浦发银行";
+		sel.open(openurl);
+		sel.windowMaximize();
+		sel.type("//*[@id='auto']",query);
+		sel.click("//*[@id='searchform']/input[6]");
+		Thread.sleep(3000);
+
+		// System.out.println(sel.getTitle());
+		sel.click(newsSelectBtn);
+		//sel.waitForPageToLoad(TIMEOUT);
+		// System.out.println(sel.getTitle());
+
+		String expectImportantNewsTitle = query;
+		String importantNewsTitle = sel.getText(ImportantNewsXpath);
+		System.out.println("重要新闻回顾预期：" + expectImportantNewsTitle + " 实际："
+				+ importantNewsTitle);
+		AssertEquals(driver,importantNewsTitle,expectImportantNewsTitle, "搜索浦发银行时重要新闻回顾的预期值和实际值的新闻title不一样");
+		
+	}
+
+	// 返回结果中，新闻条数测试
+	/**
+	 * @param newsXpath
+	 * @throws InterruptedException 
+	 */
+	@UIMessage(description = "")@Test
+	@Parameters({ "News.xpath" })
+	public void testResultList(String newsXpath) throws InterruptedException {
+		Thread.sleep(5000);
+		System.out.println("testResultList");
+		Number resultsNum = sel.getXpathCount(newsXpath);
+		System.out.println("预期新闻条数：10 " + "实际新闻条数：" + resultsNum);
+	
+		AssertEquals(driver, resultsNum, 10, "搜索浦发银行时候新闻条数和预期的不一样");
+		
+
+		
+		
+		
+
+	}
+
+	// 返回结果中，快照地址正确性测试（是否是搜牛内部地址）
+	/**
+	 * @param baseUrl
+	 * @param snapTitleXpath
+	 * @param snapUidXpath
+	 * @param snapUrlXpath
+	 */
+	@UIMessage(description = "")@Test
+	@Parameters({ "selenium.url", "snapUid.xpath",
+			"snapUrl.xpath" })
+	public void testSnapAdd(String baseUrl,
+			String snapUidXpath, String snapUrlXpath) {
+		System.out.println("testSnapAdd");
+		System.out.println(sel.getAttribute(snapUidXpath));
+		String uid = sel.getAttribute(snapUidXpath).split("_")[1];
+		String snapUrl = sel.getAttribute(snapUrlXpath);
+		String expectSnapUrl = "/snapshot/news/" + uid + ".html";
+		System.out.println("快照地址预期： " + expectSnapUrl + " 实际：" + snapUrl);
+		AssertEquals(driver, snapUrl, expectSnapUrl,"快照地址连接不是搜牛内部地址");
+		sel.open(snapUrl);
+		// String SnapUrlHead = "http://search.10jqka.com.cn/snapshot/news/";
+		String expectLongSnapUrl = baseUrl
+				+ expectSnapUrl;
+		String longSnapUrl = sel.getLocation();
+		System.out.println("快照地址预期： " + expectLongSnapUrl + " 实际打开地址："
+				+ longSnapUrl);
+		AssertEquals(driver, expectLongSnapUrl, longSnapUrl, "快照地址连接不是搜牛内部地址");
+
+	}
+
+	// 图片新闻个数测试
+	/**
+	 * @param snapPicBox
+	 * @param snapPic
+	 */
+	@UIMessage(description = "")@Test
+	@Parameters({ "snapPicBox.xpath", "snapPic.xpath" })
+	public void testPicNews(String snapPicBox, String snapPic) {
+		System.out.println("testPicNews");
+		String imageNewsBox = "";
+		try {
+			imageNewsBox = sel.getText(snapPicBox);
+		} catch (Exception e) {
+			System.out.println();
+		}
+		if (imageNewsBox.equals("图片新闻")) {
+
+			Number pictureBoxNum = sel.getXpathCount(snapPic);
+			System.out.println("图片新闻的个数为：" + pictureBoxNum.toString());
+			
+			AssertTrue(driver,pictureBoxNum.intValue() <= 4
+					&& pictureBoxNum.intValue() > 0,"图片新闻的个数超过了4个");
+		}
+
+	}
+
+	// 原文链接地址
+	/**
+	 * @param topRawLink
+	 * @param bottomRawLink
+	 */
+	@UIMessage(description = "")@Test
+	@Parameters({ "snapTopRawLink.xpath", "snapBottomRawLink.xpath" })
+	public void testRawNewsLink(String topRawLink, String bottomRawLink) {
+		System.out.println("testRawNewsLink");
+		System.out.println(sel.getTitle());
+		String topLink = sel.getAttribute(topRawLink);
+		String bottomLink = sel.getAttribute(bottomRawLink);
+		System.out.println("顶部原文链接的地址为：" + topLink + "底部原文链接的地址为" + bottomLink);
+		
+		AssertEquals(driver,topLink, bottomLink,"搜索新闻时候顶部原文链接的地址和底部原文链接的地址不一致");
+		
+	}
+
+	// 测试正文中的超链接，实际是在新闻查询首页查询链接关键字
+
+	@BeforeTest
+	@Parameters({ "selenium.host", "selenium.port", "selenium.browser",
+			"selenium.url" })
+	public void beforeTest(String host, String port, String browser, String url) throws MalformedURLException {
+		System.out.println("Before test");
+		System.out.println(host);
+//		Integer Dport = Integer.parseInt(port);
+//		sel = new DefaultSelenium(host, Dport, browser, url);
+		// sel = new DefaultSelenium(host, Dport,
+		// "C:\\Program Files\\Internet Explorer\\iexplore.exe", url);
+		// sel = new DefaultSelenium(host, Dport, "*iexplore", url);
+		DesiredCapabilities capability = DesiredCapabilities.firefox();
+		driver = new RemoteWebDriver(new URL("http://172.20.23.95:4444/wd/hub"), capability);
+	    sel = new WebDriverBackedSeleniumWrapper(driver,url);
+	    ut=new util();
+		//sel.start();
+		sel.useXpathLibrary("javascript-xpath");
+		sel.setTimeout(TIMEOUT);
+
+	}
+
+	@AfterTest
+	public void afterTest() {
+		
+		System.out.println("After test");
+		sel.stop();
+	}
+
+}

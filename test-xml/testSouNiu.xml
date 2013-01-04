@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="SouNiuSuite" parallel="tests" Thread-count="2">
+    <parameter name="selenium.host" value="172.20.23.95" />
+    <parameter name="selenium.port" value="4444" />
+    <parameter name="selenium.browser" value="*firefox" />
+<!--  <parameter name="selenium.url" value="http://search.10jqka.com.cn" /> -->
+    <test name="testSouNiu" preserve-order="true" >
+    
+    
+    
+    <parameter name="openUrl_info_1" value="/stockpick?tid=stockpick&amp;ts=1&amp;qs=1&amp;shunt=a" />
+    <parameter name="openUrl_info_2" value="/stockpick?tid=stockpick&amp;ts=1&amp;qs=1&amp;shunt=b" />
+    <parameter name="JPWJfirstSentence_xpath" value="//html/body/div[3]/div/ul/li"/>
+    <parameter name="JPWJfirstSentence_xpath_seacond" value="//*[@id='auto']@value"/>
+    
+    <!-- 测试搜索框相关部分 -->
+    <parameter name="search_box_xpath" value="//*[@id='auto']"/>
+    
+     <!-- 测试收藏喜欢语句的相关部分 -->
+     <parameter name="Employee_Query" value="股价小于10"/>
+     <parameter name="Employee_Query_2" value="发行价大于3"/>
+    
+     <!-- 测试调查问卷 -->
+     <parameter name="QuestionnaireFlag_xpath" value="//stockpick/diaocha"/>
+     <parameter name="Title_xpath" value="//*[@id='stockpick_daocha_link']"/>
+   
+   
+     <!-- 测试“收藏搜牛” -->
+     <parameter name="Flag_xpath" value="//*[@id='stockpick_favorit']"/>
+     
+     <!-- 测试 用户体验调查-->
+     <parameter name="User_Experience_Survey_Flag_xpath" value="//*[@id='stockpick_interview_link']"/>
+     <parameter name="Name" value="谢晋"/>
+     <parameter name="Tel" value="18767123776"/>
+     
+     
+     
+     <!-- 测试注册 -->
+     <parameter name="Register_Flag_xpath" value="//html/body/div/a[2]"/>
+     <parameter name="Login_Flag_xpath" value="//*[@id='top_right_bar']/a[1]"/>
+     
+     
+     <!-- 测试主标签的点击效果 -->
+     <parameter name="MainLabel_xpath" value="//*[@id='login_area']/a[2]"/>
+     
+     
+     <!-- 测试集锦搜索详情 -->
+     <parameter name="JiJin_xpath" value="//html/body/div[4]/div/ul/li/div/a/ul/li"/>
+     <parameter name="JiJin_site_Detail" value="//html/body/div[4]/div/ul/li/div/a@href"/>
+     
+     <!-- 测试热门选股 -->
+     <parameter name="Popular_Stock_firstXpath" value="//*[@class='body_i']/div[4]/a"/>
+     <parameter name="Popular_Stock_firstXpath_href" value="//*[@class='body_i']/div[4]/a@href"/>
+     <parameter name="MatchTo_Popular_Stock_firstXpath" value="//*[@id='focusin']/input"/>
+     <parameter name="Popular_Stock_secondXpath" value="//*[@class='body_i']/div[4]/a[2]"/>
+     <parameter name="Popular_Stock_secondXpath_href" value="//*[@class='body_i']/div[4]/a[2]@href"/>
+     <parameter name="MatchTo_Popular_Stock_secondXpath" value="//*[@id='focusin']/input"/>
+    
+    <!-- ‘选牛股啦’测试-->
+    <parameter name="sevenPage_Select_Ushimata_fist_Xpath" value="//*[@id='sliderBox']/ul[1]/li[1]/div/div[2]/a@href"/>
+    <parameter name="sevenPage_Select_Ushimata_Num_fist_Xpath" value="//*[@id='sliderBox']/ul[1]/li[1]/div/div[2]/a/p[2]"/>
+    <parameter name="MatchTo_sevenPage_Select_Ushimata_Num_fist_Xpath" value="//*[@id='r_num_box']/span[2]/em"/>
+    
+    <parameter name="sixPage_Select_Ushimata_fist_Xpath" value="//*[@id='sliderBox']/ul[6]/li/div/div[2]/a@href"/>
+    <parameter name="sixPage_Select_Ushimata_Num_fist_Xpath" value="//*[@id='sliderBox']/ul[6]/li/div/div[2]/a/p[2]"/>
+    <parameter name="MatchTo_sixPage_Select_Ushimata_Num_fist_Xpath" value="//*[@id='r_num_box']/span[2]/em"/>
+    
+    <parameter name="firstPage_Select_Ushimata_fist_Xpath" value="//*[@id='sliderBox']/ul[1]/li[1]/div/div[2]/a@href"/>                                                            
+    <parameter name="firstPage_Select_Ushimata_Num_fist_Xpath" value="//*[@id='sliderBox']/ul[1]/li[1]/div/div[2]/a/p[2]"/>                                                                 
+    <parameter name="MatchTo_firstPage_Select_Ushimata_Num_fist_Xpath" value="//*[@id='r_num_box']/span/em[1]"/>
+    
+    <!-- 测试换页按钮 -->
+    <parameter name="PagingBbutton_Fourth" value="//*[@id='s_a_btn_box']/span[5]"/>
+    <parameter name="MatchTo_PagingBbutton_Fourth" value="//*[@id='s_a_btn_box']/span[5]@class"/>
+    
+    <!-- 测试B版的‘大家都在问’ -->
+    <parameter name="First_Xpath" value="//*[@id='query_list_eq']/li[1]/a"/>           
+    <parameter name="MatchTo_First_Xpath" value="//*[@id='focusin']/input@value"/>
+    <parameter name="Second_Xpath" value="//*[@id='query_list_eq']/li[2]/a"/>
+    <parameter name="MatchTo_Second_Xpath" value="//*[@id='focusin']/input@value"/>
+    
+    <!--test_noResultHint-->
+    <!--选股搜2012年10月10号股价小于2添加条件"有"无结果时显示的提示-->
+    <parameter name="qusetion_remind" value="//*[@id='qusetion_remind']/span[3]"/> 查看条件
+    <parameter name="add_cond" value="//*[@id='add_cond_btn']"/> 增加条件
+    <parameter name="noResultHint" value="//*[@id='noResultHint']"/>	添加无结果条件后的提示
+    <parameter name="resultNum" value="//*[@id='r_num_box']/span/em[1]"/> 选股结果数
+    
+    
+    <!--test_queryAreaSelfstock-->
+    <parameter name="queryarea" value="//*[@id='queryarea_selfstock']"/>  
+    <parameter name="queryarea_selfstock_tip" value="//*[@id='query_selfstock_tip']"/>
+    
+    <!--test_clickQueryAreaSelfStock-->
+    <parameter name="selfstock_noresult" value="//[*id='selfstock_noresult]"/>
+    
+    <!--test_addQueryAreaSelfStock-->
+    <parameter name="addselfstock" value="//*[@id='offtblbdy']/tr[1]/td[2]/input"/>
+    <parameter name="save_selfstock" value="//*[@id='btn_save_selfstock']"/>
+      
+    <!--test_switch-->  
+    <parameter name="queryListEp" value="//*[@id='query_list_eq']/li[1]/a"/>
+    <parameter name="switch_btn" value="//*[@id='switch_btn_eq']"/>
+    
+    <!--test_gengduo-->
+    <parameter name="gengduo" value="//html/body/div[1]/div/div[3]/div/div/a@href"/>
+    
+    <!--test_search_gengduo-->
+    <parameter name="searchGengDuo" value="//*[@id='bar']/li[10]/a"/>
+    <parameter name="seo" value="//*[@id='morelist']/li[3]/a@href"/>
+    
+    <!--test_fixedRow_code-->
+    <parameter name="test_fixedRow_code" value="//*[@id='sortTable']/thead/tr[1]/th[2]"/>
+    <parameter name="test_fixedRow_code_top" value="304"/>
+    <parameter name="test_fixedRow_code_left" value="17"/>
+    
+   <!--test_recoverCondsBtn -->
+   <parameter name="recoverCondsBtn" value="//*[@id='recoverCondsBtn']"/>
+   <parameter name="ZuiXinJia" value="//*[@id='sortTable']/thead/tr/th[5]"/>
+   <parameter name="tiaojian" value="//*[@id='cond_bar_1']"/>
+   
+   <!--test_recoverCondsBtn_second-->
+   <parameter name="del_cond" value="//*[@id='del_cond_btn_1']"/>
+   <parameter name="pe" value="//*[@id='sortTable']/thead/tr/th[5]"/>
+   
+   <!--test_shuJuSouSuo-->
+   <parameter name="yingYeShouRu" value="//*[@id='offtblbdy']/tr/td[4]/span[1]"/>
+    <parameter name="huju" value="//*[@id='offtblbdy']/tr/td[4]/span[1]"/>
+    
+   <!--test_shuJuSouSuo_Second-->
+   <parameter name="JinLiRun" value="//*[@id='offtblbdy']/tr/td[5]/span[1]"/>
+   
+   <!--test_xiayiye-->
+   <parameter name="next" value="//*[@id='pageBar']/a[126]"/>
+   
+   <!--test_xiaotieshi-->
+   <parameter name="shangchuan" value="//html/body/div[1]/div[1]/div[3]/div/div[8]/div[3]/div[3]/div[3]/div[4]/div/p/span[1]"/>
+   
+   <!-- test_matchTipTop -->
+   <parameter name="matchTip" value="//*[@id='matchTipTop']/span[2]"/>
+   <parameter name="intro"  value="//*[@id='matchTipTop']/span[3]@style"/>
+   
+   <!--test_clickXTSwenju-->
+   <parameter name="XTSwenju" value="//html/body/div[1]/div[1]/div[3]/div/div[8]/div[3]/div[3]/div[3]/div[4]/div/div[1]/ul/li[1]/a"/>
+  
+  <!--test_clickXTSgengduo-->
+  <parameter name="XTSgengduo" value="//html/body/div[1]/div[1]/div[3]/div/div[8]/div[3]/div[3]/div[3]/div[4]/p[2]/a"/>
+  <parameter name="tips_crumb" value="//html/body/div[1]/div[1]/div[3]/div/div[1]"/>
+  
+  <!--test_clickxiapo-->
+  <parameter name="xiapo" value="//html/body/div[1]/div[1]/div[3]/div/div[2]/div/div[2]/div[1]/div[1]/ul/li[1]/a"/>
+ 
+ <!--test_stockInfo_con-->
+   <parameter name="firststock" value="//*[@id='offtblbdy']/tr[1]/td[3]/a"/>
+   
+   <!--test_stockInfo_con_UIlocation-->
+   <parameter name="stockInfo_con" value="//*[@id='stockInfo_con']"/>
+   <parameter name="stockInfo_con_top"    value="279"/>
+   <parameter name="stockInfo_con_left" value="230"/>
+   
+   <!--test_stockInfo_con_zhengu-->
+   <parameter name="zhengu" value="//*[@id='stockInfo_con']/div[2]/a[2]"/>
+    <classes>
+        <class name="com.myhexin.testSouNiu"/>
+        <methods>
+          <!-- <include name="testTopRightClickChange"/> -->
+            <!-- <include name="testBottomClickChange"/> --> 
+           <!--  <include name="testSearch_box"/> -->
+            <include name="testSearch_box_collectFavorite"/>
+			<!-- <include name="testQuestionnaire"/> -->
+			<!-- <include name="testOnlineToAnswer"/> -->
+			<include name="testRegisterAndLogin"/>
+		    <!--<include name="testUser_Experience_Survey"/> -->
+			<!-- <include name="testClickMainLabel"/> -->
+            <!-- <include name="testJPWJ"/> -->
+            <!-- <include name="testXGFangAnJiJin"/> -->
+            <!-- <include name="testButton_YanBaoGu"/> -->
+            <include name="testFeedBackOpinion"/>
+            <include name="testStoreSelectStocks"/>
+            <!-- <include name="testPopular_Stock_first"/>-->
+            <!--  <include name="testPopular_Stock_second"/>-->
+            <!-- <include name="testSelect_Ushimata_sevenPage"/>-->
+            <!--<include name="testSelect_Ushimata_sixPage"/>-->
+           <!--  <include name="testSelect_Ushimata_firstPage"/> -->
+            <include name="test_FormFeed"/>
+            <include name="test_dajia_douzaiwen"/>
+            <include name="test_noResultHint"/>
+            <!--<include name="test_queryAreaSelfStock"/>-->
+            <include name="test_switch"/>
+            <include name="test_gengduo"/>
+            <include name="test_search_gengduo"/>
+            <include name="test_fixedRow_code"/>
+            <include name="test_recoverCondsBtn"/>
+            <include name="test_recoverCondsBtn_second"/>
+            <include name="test_shuJuSouSuo"/>
+            <include name="test_shuJuSouSuo_Second"/>
+            <include name="test_xiayiye"/>
+            <include name="test_xiaotieshi"/>
+          <include name="test_matchTipTop"/>
+            <include name="test_clickXTSwenju"/>
+            <include name="test_clickXTSgengduo"/>
+            <include name="test_clickxiapo"/>               
+            <include name="test_stockInfo_con"/> 
+            <include name="test_stockInfo_con_UIlocation"/>
+            
+            
+         </methods>
+        </classes>
+    </test> <!-- Test -->
+</suite> <!-- Suite -->

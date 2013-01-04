@@ -1,0 +1,487 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite"  parallel="tests" Thread-count="6">
+    <parameter name="selenium.host" value="172.20.23.95" />
+    <parameter name="selenium.port" value="4444" />
+    <parameter name="selenium.browser" value="*firefox" />
+  <parameter name="selenium.url" value="http://search.10jqka.com.cn/" /> 
+
+    <!-- 公共Ui位置，包括：信息，新闻 -->
+    <parameter name="zhankaizoushitu" value="//*[@id='showflash']" />
+
+    <!-- 重要新闻的标题，flash和新闻列表 -->
+    <parameter name="common_zhongyaoxinwen_title" value="//*[@id='trace']/div[1]/h2" />
+    <parameter name="common_zhongyaoxinwen_flash" value="//*[@id='SouNiuTimeTunnel']" />
+    <parameter name="common_zhongyaoxinwen_list" value="//*[@id='news_main']" />
+
+    <!-- 搜索框 -->
+    <parameter name="common_searchbtn" value="//*[@id='searchform']/input[10]" />
+    <parameter name="common_searchbtn_top" value="47" />
+    <parameter name="common_searchbtn_left" value="648" />
+
+    <!-- 频道左侧的菜单，包括：全文查询，标题查询，一天内，三个月，自定义时间，这里的数据是信息，研报可以用到的 -->
+    <parameter name="common_quanwenchaxun" value="//*[@id='queryfilter_content']/li[1]" />
+    <parameter name="common_quanwenchaxun_top" value="126" />
+    <parameter name="common_quanwenchaxun_left" value="8" />
+    <parameter name="common_biaotichaxun" value="//*[@id='queryfilter_content']/li[2]/a" />
+    <parameter name="common_biaotichaxun_top" value="153" />
+    <parameter name="common_biaotichaxun_left" value="33" />
+    <parameter name="common_yitiannei" value="//*[@id='filterTime']/li[1]/a" />
+    <parameter name="common_yitiannei_top" value="268" />
+    <parameter name="common_yitiannei_left" value="33" />
+    <parameter name="common_sangeyue" value="//*[@id='filterTime']/li[3]/a" />
+    <parameter name="common_sangeyue_top" value="314" />
+    <parameter name="common_sangeyue_left" value="33" />
+    <parameter name="common_zidingyishijian" value="//*[@id='diyTime']" />
+    <parameter name="common_zidingyishijian_top" value="360" />
+    <parameter name="common_zidingyishijian_left" value="33" />
+
+    <!-- 首页的位置 -->
+    <parameter name="searchbtn" value="//*[@id='searchform']/input[6]" />
+    <parameter name="Index_searchbtn_top" value="160" />
+    <parameter name="Index_searchbtn_left" value="925"/>
+    <parameter name="yidong_frame" value="//*[@id='abstocknews']/div[2]" />
+    <parameter name="Index_yidong_top" value="265" />
+    <parameter name="Index_yidong_left" value="335" />
+    <parameter name="todaynews" value="//*[@id='leftt']" />
+    <parameter name="Index_news_top" value="" />
+    <parameter name="Index_news_left" value="334" />
+    <parameter name="weibo" value="//*[@id='leftb']" />
+    <parameter name="Index_weibo_top" value="" />
+    <parameter name="Index_weibo_left" value="334" />
+
+    <!-- 信息频道 ,研报-->
+    <!-- 因为研报和信息频道UI差不多，所以复用信息的数据 -->
+    <parameter name="info_searchbtn" value="//*[@id='searchform']/input[10]" />
+    <parameter name="info_searchbtn_top" value="47" />
+    <parameter name="info_searchbtn_left" value="648" />
+
+    <!-- 信息频道走势图，研报可以用这个数据 -->
+    <parameter name="info_zoushitu" value="//*[@id='gghq']/embed" />
+    <parameter name="info_zoushitu_top" value="411" />
+    <parameter name="info_zoushitu_left" value="155" />
+    
+    <parameter name="yanbao_zoushitu_top" value="153"/>
+    <parameter name="yanbao_zoushitu_left" value="155"/>
+    
+    
+
+    <!-- 牛叉诊股票：标题和内容 -->
+    <parameter name="info_niuchazhengu_title" value="//*[@id='zg_url_title']" />
+    <parameter name="info_niuchazhengu_title_top" value="623" />
+    <parameter name="info_niuchazhengu_title_left" value="155" />
+    <parameter name="info_niuchazhengu_content" value="//*[@id='hidelist']/div[5]/div[3]" />
+    <parameter name="info_niuchazhengu_content_top" value="673" />
+    <parameter name="info_niuchazhengu_content_left" value="155" />
+
+    <!-- 信息频道的重要新闻：标题，flash，新闻列表的UI元素位置,注意不是xpath位置，xpath位置定义在common里面 -->
+    <parameter name="info_zhongyaoxinwen_title_top" value="133" />
+    <parameter name="info_zhongyaoxinwen_title_left" value="1035" />
+    <parameter name="info_zhongyaoxinwen_flash_top" value="164" />
+    <parameter name="info_zhongyaoxinwen_flash_left" value="1035" />
+    <parameter name="info_zhongyaoxinwen_list_top" value="177" />
+    <parameter name="info_zhongyaoxinwen_list_left" value="1035" />
+
+    <!-- 新闻频道 -->
+    <!-- 新闻频道的重要新闻：标题，flash，新闻列表的UI元素位置,注意不是xpath位置，xpath位置定义在common里面 -->
+    <parameter name="news_zhongyaoxinwen_title_top" value="132" />
+    <parameter name="news_zhongyaoxinwen_title_left" value="156" />
+    <parameter name="news_zhongyaoxinwen_flash_top" value="162" />
+    <parameter name="news_zhongyaoxinwen_flash_left" value="156" />
+    <parameter name="news_zhongyaoxinwen_list_top" value="132" />
+    <parameter name="news_zhongyaoxinwen_list_left" value="442" />
+
+    <!-- 公告频道 -->
+    <!-- 公告频道左侧的：港股频道，基金频道，股票频道 -->
+    <parameter name="gonggao_L_gupiaogonggao" value="//*[@id='queryfilter_category']/li[1]/a" />
+    <parameter name="gonggao_L_gupiaogonggao_top" value="130" />
+    <parameter name="gonggao_L_gupiaogonggao_left" value="33" />
+    <parameter name="gonggao_L_jijingonggao" value="//*[@id='queryfilter_category']/li[2]/a" />
+    <parameter name="gonggao_L_jijingonggao_top" value="153" />
+    <parameter name="gonggao_L_jijingonggao_left" value="33" />
+    <parameter name="gonggao_L_ganggugonggao" value="//*[@id='queryfilter_category']/li[4]/a" />
+    <parameter name="gonggao_L_ganggugonggao_top" value="199" />
+    <parameter name="gonggao_L_ganggugonggao_left" value="33" />
+
+    <!-- 选股频道 -->
+
+  <!--   <parameter name="Ontology_searchbtn_top" value="211" />
+    <parameter name="Ontology_searchbtn_left" value="918" /> -->
+
+    <parameter name="Ontology_searchbtn_top" value="133" />
+    <parameter name="Ontology_searchbtn_left" value="1063" />
+
+    
+    <!-- 金牌问句-->
+    <parameter name="Ontology_GoldQuestion" value="//html/body/div[4]/h3/div" />
+    <parameter name="Ontology_GoldQuestion_top" value="293" />
+    <parameter name="Ontology_GoldQuestion_left" value="278" />
+    
+    <!-- B版本首页的‘大家都在问 ’-->
+    <parameter name="Ontology_Allask" value="//html/body/div[1]/div/div[3]/h3/div[1]" />
+    <parameter name="openUrl_info_1" value="/stockpick?tid=stockpick&amp;ts=1&amp;qs=1&amp;shunt=b"/>
+    <parameter name="Ontology_Allask_top" value="448" />
+    <parameter name="Ontology_Allask_left" value="440" />
+    
+    
+    <!-- A版‘选牛股啦’位置测试 -->
+    <parameter name="openUrl_info_2" value="/stockpick?tid=stockpick&amp;ts=1&amp;qs=1&amp;shunt=a"/>
+    
+    <!-- 选股logo-->
+    <parameter name="Ontology_Logo" value="//*[@id='topnavCon']/div/a" />
+    <parameter name="Ontology_Logo_top" value="123"/>
+    <parameter name="Ontology_Logo_left" value="296"/>
+    
+    <!-- 问句类型-->
+    <parameter name="Ontology_QuestionType" value="//*[@id='t_q_box']" />
+    <parameter name="Ontology_QuestionType_top" value="295"/>
+    <parameter name="Ontology_QuestionType_left" value="749"/>
+    
+    <!-- 方案集锦标题-->
+    <parameter name="Ontology_Schemetitle" value="//html/body/div[4]/h3" />
+    <parameter name="Ontology_Schemetitle_top" value="453"/>
+    <parameter name="Ontology_Schemetitle_left" value="278"/>
+    
+    <!-- 方案集锦内容-->
+    <parameter name="Ontology_Schemecontent" value="//*[@id='sliderBox']" />
+    <parameter name="Ontology_Schemecontent_top" value="503"/>
+    <parameter name="Ontology_Schemecontent_left" value="278"/>
+    
+    <!-- 方案集锦选项-->
+    <parameter name="Ontology_SchemeOption" value="//*[@id='s_a_btn_box']"/>
+    <parameter name="Ontology_SchemeOption_top" value="663"/>
+    <parameter name="Ontology_SchemeOption_left" value="278"/>
+    
+
+    <!-- 详情提示-->
+    <parameter name="Ontology_BeginnerTips" value="//html/body/div[6]/div/div/span" />
+    <parameter name="Ontology_QuestionRemind" value="//*[@id='qusetion_remind']" />
+    <parameter name="Ontology_QuestionRemind_top" value="164" />
+    <parameter name="Ontology_QuestionRemind_left" value="15" />
+    <parameter name="Ontology_QuestionRemind_btn" value="//*[@id='qusetion_remind']/span[3]" />
+    
+    <!-- 推荐问句-->
+    <parameter name="Ontology_SuggestQuery" value="//*[@id='relQuesBox']/div[1]" />
+    <parameter name="Ontology_SuggestQuery_top" value="164" />
+    <parameter name="Ontology_SuggestQuery_left" value="1135" />
+
+ 
+
+    <!-- 股票选项-->
+    <parameter name="Ontology_StockOption" value="//*[@id='searchform']/div[3]/span[2]/label" />
+    <parameter name="Ontology_StockOption_top" value="76" />
+    <parameter name="Ontology_StockOption_left" value="406" />
+
+    <!-- 基金选项-->
+    <parameter name="Ontology_FundOption" value="//*[@id='searchform']/div[3]/span[4]/label" />
+    <parameter name="Ontology_FundOption_top" value="76" />
+    <parameter name="Ontology_FundOption_left" value="460" />
+
+
+    <!-- 在线解答 -->
+    <parameter name="Ontology_Onlinetoanswer" value="//*[@id='im_icon']" />
+    <parameter name="Ontology_Onlinetoanswer_top" value="506" />
+    <parameter name="Ontology_Onlinetoanswer_left" value="1381" />
+
+    <!-- 调查问卷-->
+    <parameter name="Ontology_Diaocha" value="//*[@id='stockpick_daocha_link']" />
+    <parameter name="Ontology_Diaocha_top" value="626" />
+    <parameter name="Ontology_Diaocha_left" value="1381" />
+    
+    
+    
+    <!-- 搜索栏的里五角星-->
+    <parameter name="Ontology_Favorit_btn" value="//*[@id='favorit_btn']" />
+    <parameter name="Ontology_Favorit_btn_top" value="83" />
+    <parameter name="Ontology_Favorit_btn_left" value="1050" />
+    
+    <!-- 收藏选股-->
+    <parameter name="Ontology_Stock_pick" value="//*[@id='stockpick_favorit']" />
+    <parameter name="Ontology_Stock_pick_top" value="0" />
+    <parameter name="Ontology_Stock_pick_left" value="1140" />
+    
+    <!-- 收藏问句-->
+    <parameter name="Ontology_Query_collect" value="//*[@id='q_collect']" />
+    <parameter name="Ontology_Query_collect_top" value="8" />
+    <parameter name="Ontology_Query_collect_left" value="1204" /> 
+    <!-- 选股结果-title-->
+    <parameter name="Ontology_ExpandDetails" value="//*[@id='qusetion_remind']/span[3]" />
+    <parameter name="Ontology_ResultTopword" value="//html/body/div[7]/div[1]/div[3]/h3/span[2]/em[2]"/>
+
+    <parameter name="Ontology_ResultTopword_top" value="323" />
+    <parameter name="Ontology_ResultTopword_left" value="338" />
+
+    <parameter name="Ontology_ResultTopword_top" value="324" />
+    <parameter name="Ontology_ResultTopword_left" value="338" />
+
+
+    <!-- 选股结果-股票数目-->
+    <parameter name="Ontology_StockNum" value="//*[@id='r_num_box']/span/em[1]"/>
+
+    <parameter name="Ontology_StockNum_top" value="323" />
+    <parameter name="Ontology_StockNum_left" value="308" />
+
+    <parameter name="Ontology_StockNum_top" value="231" />
+    <parameter name="Ontology_StockNum_left" value="91" />
+
+    
+    <!-- 选股结果-是否满意-->                           
+    <parameter name="Ontology_WhetherSatisfied" value="//*[@id='btn_layer_2']/div[2]/div[1]/span[1]"/>
+
+    <parameter name="Ontology_WhetherSatisfied_top" value="982" />
+    <parameter name="Ontology_WhetherSatisfied_left" value="474" />
+
+
+    <!-- 选股结果-正确-->
+    <parameter name="Ontology_GoodPick" value="//*[@id='btn_layer_2']/div[2]/div[1]/span[2]"/>
+
+    <parameter name="Ontology_GoodPick_top" value="982" />
+    <parameter name="Ontology_GoodPick_left" value="563" />
+
+    
+
+
+    <!-- 问句分析-条件组合-->     
+    <parameter name="Ontology_ConditionCombination" value="//*[@id='condComp_0_0']" />
+    <parameter name="Ontology_ConditionCombination_top" value="212" />
+    <parameter name="Ontology_ConditionCombination_left" value="120" />
+
+
+    <!-- 问句分析-条件1-->
+
+    <parameter name="Ontology_conditionOuter" value="//*[@id='cond_bar_0']" />
+    <parameter name="Ontology_conditionOuter_top" value="212" />
+    <parameter name="Ontology_conditionOuter_left" value="16" />
+
+
+    
+    
+    <!-- 追加条件-->
+    <parameter name="Ontology_Add_cond" value="//*[@id='add_cond_btn']" />
+
+    <parameter name="Ontology_Add_cond_top" value="259" />
+    <parameter name="Ontology_Add_cond_left" value="37" />
+
+    
+
+
+    <!-- 去论坛看看 -->
+    <parameter name="Ontology_GOtoBBS" value="//*[@id='gobbs2']" />
+    <parameter name="Ontology_GOtoBBS_top" value="" />
+    <parameter name="Ontology_GOtoBBS_left" value="" />
+
+    <!-- 提意见 -->
+    <parameter name="Ontology_Feedback" value="//*[@id='give_suggest_link']" />
+    <parameter name="Ontology_Feedback_top" value="" />
+    <parameter name="Ontology_Feedback_left" value="" />
+
+    <!-- 加入自选股 -->
+    <parameter name="Ontology_Saveselfstock" value="//*[@id='btn_save_selfstock']" />
+
+    <parameter name="Ontology_Saveselfstock_top" value="1069" />
+    <parameter name="Ontology_Saveselfstock_left" value="88" />
+
+    
+
+
+
+    <!-- 历史问句 -->
+    <parameter name="Ontology_History" value="//*[@id='hisQuesBox']/div[1]" />
+
+    <parameter name="Ontology_History_top" value="518" />
+    <parameter name="Ontology_History_left" value="1135" />
+
+   
+
+    <!-- 选牛股啦 -->
+    <parameter name="ElectionUshimata" value="//html/body/div[1]/div/div[4]/h3/em" />
+    
+    <parameter name="ElectionUshimata_top" value="227" />
+    <parameter name="ElectionUshimata_left" value="288" />
+    
+    
+    <!-- 博客频道 -->
+    
+   <!-- 博客首页-博客全文 -->
+    <parameter name="BlogIndex_Blogfulltext" value="//*[@id='searchform']/div[3]/span[2]/label"/>
+    <parameter name="BlogIndex_Blogfulltext_top" value="81" />
+    <parameter name="BlogIndex_Blogfulltext_left" value="518" />
+    
+    <!-- 博客首页-标题 -->
+    <parameter name="BlogIndex_Title" value="//*[@id='searchform']/div[3]/span[4]/label"/>
+    <parameter name="BlogIndex_Title_top" value="81" />
+    <parameter name="BlogIndex_Title_left" value="591" />
+    
+   <!-- 博客首页-博主-->
+    <parameter name="BlogIndex_Blogger" value="//*[@id='searchform']/div[3]/span[6]/label"/>
+    <parameter name="BlogIndex_Blogger_top" value="81"/>
+    <parameter name="BlogIndex_Blogger_left" value="640" />
+    
+    <!-- 博客首页-标签-->
+    <parameter name="BlogIndex_Label" value="//*[@id='searchform']/div[3]/span[8]/label"/>
+    <parameter name="BlogIndex_Label_top" value=""/>
+    <parameter name="BlogIndex_Label_left" value="689" />
+    
+    <!-- 博客首页-精彩推荐-->
+    <parameter name="BlogIndex_Jctj" value="//html/body/div[5]/div[1]"/>
+    <parameter name="BlogIndex_Jctj_top" value="125"/>
+    <parameter name="BlogIndex_Jctj_left" value="325"/>
+    
+    <!-- 博客首页-名人名博-->
+    <parameter name="BlogIndex_Mrmb" value="//html/body/div[5]/div[2]/div[1]"/>
+    <parameter name="BlogIndex_Mrmb_top" value="380"/>
+    <parameter name="BlogIndex_Mrmb_left" value="325"/>
+    
+    <!-- 博客首页-经济杂谈-->
+    <parameter name="BlogIndex_Jjzt" value="//html/body/div[5]/div[2]/div[2]"/>
+    <parameter name="BlogIndex_Jjzt_top" value="382"/>
+    <parameter name="BlogIndex_Jjzt_left" value="718"/>
+    
+    <!-- 博客首页-市场信息-->
+    <parameter name="BlogIndex_Scxx" value="//html/body/div[5]/div[2]/div[4]"/>
+    <parameter name="BlogIndex_Scxx_top" value="486"/>
+    <parameter name="BlogIndex_Scxx_left" value="325"/>
+    
+    <!-- 博客首页-大盘走势-->
+    <parameter name="BlogIndex_Dpzs" value="//html/body/div[5]/div[2]/div[5]"/>
+    <parameter name="BlogIndex_Dpzs_top" value="486"/>
+    <parameter name="BlogIndex_Dpzs_left" value="718"/>
+    
+    <!-- 博客首页-技术分析-->
+    <parameter name="BlogIndex_Jsfx" value="//html/body/div[5]/div[2]/div[7]"/>
+    <parameter name="BlogIndex_Jsfx_top" value="710"/>
+    <parameter name="BlogIndex_Jsfx_left" value="325"/>
+    
+    <!-- 博客首页-价值分析-->
+    <parameter name="BlogIndex_Jzfx" value="//html/body/div[5]/div[2]/div[8]"/>
+    <parameter name="BlogIndex_Jzfx_top" value="710"/>
+    <parameter name="BlogIndex_Jzfx_left" value="718"/>
+
+    
+    <test name="testUIlocation_Ontology" preserve-order="true">
+     <classes>
+      <class name="com.myhexin.testUIlocation_Ontology"/>
+       <methods>
+         <include name="testOntology_searchbtn"/>
+         <include name="testOntology_ALLask"/>
+	     <include name="testOntology_GoldQuestion"/>
+	     <include name="testOntology_Logo"/>
+	     <include name="testOntology_QuestionRemind"/>
+	     <include name="testOntology_SuggestQuery"/>
+	     <!-- <include name="testOntology_StockOption"/> -->
+	     <!-- <include name="testOntology_FundOption"/> -->
+	     <include name="testOntology_Onlinetoanswer"/>
+	     <include name="testOntology_Diaocha"/>
+	     <include name="testOntology_Favorit_btn"/>
+	     <include name="testOntology_Stock_pick"/>
+	     <include name="testOntology_Query_collect"/>
+	     <!-- <include name="testOntology_ResultTopword"/> -->
+	     <include name="testOntology_StockNum"/>
+	     <include name="testOntology_GoodPick"/>
+	     <include name="testOntology_WhetherSatisfied"/>
+	     <include name="testOntology_ConditionCombination"/>
+	     <include name="testOntology_AdditionalConditions"/>
+	     <include name="testOntology_conditionOuter"/>
+	     <include name="testOntology_Add_cond"/>
+	     <!--<include name="testOntology_GOtoBBS"/>-->
+	     <include name="testOntology_Feedback"/>
+	     <include name="testOntology_Saveselfstock"/>
+	     <include name="testOntology_History"/>
+	     <include name="testOntology_ElectionUshimataLocation"/>
+	     
+      </methods>
+     </classes>
+    </test> 
+	<test name="testUIlocation_News" preserve-order="true">
+     <classes>
+      <class name="com.myhexin.testUIlocation_News"/>
+       <methods>
+        <include name="testNews_zhongyaoxinwen_list"/>
+	    <include name="testNews_zhongyaoxinwen_title"/>
+	    <include name="testNews_zhongyaoxinwen_flash"/>
+	    <include name="test_common__serachbtn"/>
+	    <include name="test_common_quanwenchaxun"/>
+	    <include name="test_common_biaotichaxun"/>
+	    <include name="test_common_yitiannei"/>
+	    <include name="test_common_sangeyue"/>
+	    <include name="test_common_zidingyishijian"/>
+      </methods>
+     </classes>
+    </test>
+    <test name="testUIlocation_InfoAndIndex" preserve-order="true">
+      <classes>
+       <class name="com.myhexin.testUIlocation_InfoAndIndex"/>
+        <methods>
+		    <include name="testIndex_searchbtn"/>
+		    <include name="testIndex_yidong"/>
+		    <!-- <include name="testIndex_todaynews"/> -->
+		    <!-- <include name="testIndex_weibo"/> -->
+		    <include name="testInfo_zoushitu"/>
+		    <include name="test_common__serachbtn"/>
+		    <include name="test_common_quanwenchaxun"/>
+		    <include name="test_common_biaotichaxun"/>
+		    <include name="test_common_yitiannei"/>
+		    <include name="test_common_sangeyue"/>
+		    <include name="test_common_zidingyishijian"/>
+		    <include name="testInfo_niuchazhengu_title"/>
+		    <include name="testInfo_niuchazhengu_content"/>
+		    <include name="testInfo_zhongyaoxinwen_title"/>
+		    <include name="testInfo_zhongyaoxinwen_flash"/>
+		    <include name="testInfo_zhongyaoxinwen_list"/>
+       </methods>
+      </classes>
+    </test>
+    <test name="testUIlocation_Gonggao" preserve-order="true">
+     <classes>
+      <class name="com.myhexin.testUIlocation_Gonggao"/>
+       <methods>
+	    <include name="testGonggao_zhongyaoxinwen_title"/>
+	    <include name="testGonggao_zhongyaoxinwen_flash"/>
+	    <include name="testGonggao_zhongyaoxinwen_list"/>
+	    <include name="test_common_serachbtn"/>
+	    <include name="testGonggao_L_gupiaogongao"/>
+	    <include name="testGonggao_L_jijingongao"/>
+	    <include name="testGonggao_L_ganggugongao"/>
+      </methods>
+     </classes>
+    </test>
+    <test name="testUIlocation_Yanbao" preserve-order="true">
+     <classes>
+      <class name="com.myhexin.testUIlocation_Yanbao"/>
+       <methods>
+	    <include name="testYanbao_zoushitu"/>
+	    <include name="test_common__serachbtn"/>
+	    <include name="test_common_quanwenchaxun"/>
+	    <include name="test_common_biaotichaxun"/>
+	    <include name="test_common_yitiannei"/>
+	    <include name="test_common_sangeyue"/>
+	    <include name="test_common_zidingyishijian"/>
+	    <include name="testYanbao_niuchazhengu_title"/>
+	    <include name="testYanbao_niuchazhengu_content"/>
+	    <include name="testYanbao_zhongyaoxinwen_title"/>
+	    <include name="testYanbao_zhongyaoxinwen_flash"/>
+	    <include name="testYanbao_zhongyaoxinwen_list"/>
+     </methods>
+    </classes>
+   </test>
+   
+	     
+   <test name="testUIlocation_Blog" preserve-order="true">
+      <classes>
+       <class name="com.myhexin.testUIlocation_Blog"/>
+        <methods>
+	        <include name="testBlogIndex_Blogfulltext"/>
+	        <include name="testBlogIndex_Title"/>
+	        <include name="testBlogIndex_Blogger"/>
+	        <include name="testBlogIndex_Label"/>
+	        <include name="testBlogIndex_Jctj"/>
+	        <include name="testBlogIndex_Mrmb"/>
+	        <include name="testBlogIndex_Jjzt"/>
+	        <include name="testBlogIndex_Scxx"/>
+	        <include name="testBlogIndex_Dpzs"/>
+	        <include name="testBlogIndex_Jsfx"/>
+	        <include name="testBlogIndex_Jzfx"/>
+        </methods>
+       </classes>
+     </test>
+</suite> <!-- Suite -->
+

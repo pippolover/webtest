@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Suite" duration-ms="9653" started-at="2012-05-24T14:15:40Z" finished-at="2012-05-24T14:15:50Z">
+    <groups>
+    </groups>
+    <test name="Test" duration-ms="9653" started-at="2012-05-24T14:15:40Z" finished-at="2012-05-24T14:15:50Z">
+      <class name="com.myhexin.TestReport">
+        <test-method status="PASS" signature="beforeTest(java.lang.String, int, java.lang.String, java.lang.String)[pri:0, instance:com.myhexin.TestReport@109037d]" name="beforeTest" is-config="true" duration-ms="8178" started-at="2012-05-24T14:15:40Z" finished-at="2012-05-24T14:15:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[172.20.23.95]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[4444]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[*firefox]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[http://search.10jqka.com.cn/]]>
+              </value>
+            </param>
+          </params>
+        </test-method> <!-- beforeTest -->
+        <test-method status="PASS" signature="testFengyun(java.lang.String)[pri:0, instance:com.myhexin.TestReport@109037d]" name="testFengyun" duration-ms="845" started-at="2012-05-24T14:15:49Z" finished-at="2012-05-24T14:15:49Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[/?tid=report&ts=1&qs=1#]]>
+              </value>
+            </param>
+          </params>
+        </test-method> <!-- testFengyun -->
+        <test-method status="PASS" signature="afterTest()[pri:0, instance:com.myhexin.TestReport@109037d]" name="afterTest" is-config="true" duration-ms="613" started-at="2012-05-24T14:15:49Z" finished-at="2012-05-24T14:15:50Z">
+        </test-method> <!-- afterTest -->
+      </class> <!-- com.myhexin.TestReport -->
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+</testng-results>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite" parallel="false">
+    <parameter name="selenium.host" value="172.20.23.95" />
+    <parameter name="selenium.port" value="4444" />
+    <parameter name="selenium.browser" value="*firefox" />
+    <parameter name="selenium.url" value="http://search.10jqka.com.cn/" />
+    
+    
+    
+	<test name="Test">
+	<parameter name="openUrl" value="/?tid=report&amp;ts=1&amp;qs=1#" />
+	<parameter name="queryInputId" value="id=auto" />
+	<parameter name="searchbtn" value="css=input.searchbtn" />
+	<parameter name="query" value="600000" />
+	<!-- 第一条结果xpath -->
+	<parameter name="firstRlt" value='//div[@class="repeat-contain"][1]/h2' />
+	
+	  <classes>
+	    <class name="com.myhexin.TestReport"/>
+	    	<methods>
+	      		<include name="" />
+	      	</methods>
+	    </classes>
+	</test> <!-- Test -->
+</suite> <!-- Suite -->

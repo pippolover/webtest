@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suites>
+    <suite name="Pubnotesuit" parallel="false">
+        <parameter name="selenium.host" value="172.20.23.95" />
+        <parameter name="selenium.port" value="4444" />
+         <parameter name="selenium.browser" value="*firefox" />
+     <!--  <parameter name="selenium.url" value="http://search.10jqka.com.cn/" /> -->
+        <test name="testPubnote" preserve-order="true" >
+            <!-- QuerySearch -->
+            <!-- 在公告栏输股票,查看其结果 -->
+            <parameter name="selenium.pubnote" value="/?tid=pubnote&amp;ts=1&amp;qs=1" />
+            <parameter name="queryInputId" value="id=auto" />
+            <parameter name="query" value="浦发银行2011" />
+            <parameter name="searchbtn" value="css=input.search_btn" />
+            <parameter name="xpath1" value="//*[@id='hidelist']" />
+            <parameter name="query2" value="浦发银行" />
+
+            <!-- ClinkZhaiQuan -->
+            <!-- 在上次搜索结果中,点击债券按钮 -->
+            <parameter name="link.xpath" value="//*[@id='leftside']/ul[1]/li[3]/a" />
+            <parameter name="title.text2" value="//*[@id='hidelist']/div[5]/h2/a" />
+            <parameter name="keywordquery" value="债券" />
+
+            <!-- QuerySearch2-->
+            <!-- 在公告栏输基金,查看其结果 -->
+            <parameter name="openUrl" value="/?tid=pubnote&amp;ts=1&amp;qs=1" />
+            <parameter name="queryInputId" value="id=auto" />
+            <parameter name="query3" value="华夏大盘" />
+            <parameter name="searchbtn" value="css=input.search_btn" />
+            <parameter name="linkxpath1" value="//*[@id='leftside']/ul[1]/li[2]/a" />
+            <parameter name="title.text3" value="//*[@id='hidelist']/div[5]/h2/a" />
+            <parameter name="keywordquery1" value="华夏大盘" />
+
+            <!-- ClinkGuangGu-->
+            <!-- 在上次搜索结果中,点击港股按钮 -->
+            <parameter name="link.xpath2" value="//*[@id='leftside']/ul[1]/li[4]/a" />
+            <parameter name="title.text4" value="//*[@class='nors']" />
+
+            <!-- QuerySearch3-->
+            <!-- 打开一网址,在下面的搜索框输入一股票,查看其结果 -->>
+            <parameter name="openUrl2" value="/search?preParams=&amp;ts=1&amp;f=1&amp;qs=1&amp;tid=pubnote&amp;w=乐普医疗" />
+            <parameter name="queryInputId2" value="//*[@id='hidelist']/form/div/input" />
+            <parameter name="query1" value="浦发银行  2011年度业绩快报" />
+            <parameter name="searchbtn2" value="//*[@id='hidelist']/form/input[7]"/>
+            <parameter name="link.xpath3" value="//*[@id='hidelist']/div[5]/h2/a" />
+
+            <!-- NextPage-->
+            <!-- 在上次搜索结果中,搜索一股票,点击第二页,查看其结果 -->
+            <parameter name="query4" value="300033" />
+            <parameter name="nextpage.xpath" value="//*[@id='hidelist']/div[20]/a[1]" />
+            <parameter name="title.text5" value="//*[@id='hidelist']" />
+            <parameter name="query5" value="同花顺" />
+
+            <!-- ReturnToHome -->
+            <!-- 在上次搜索结果中,点击返回首页按钮 -->
+            <parameter name="return.main" value="//*[@id='searchform']/div[2]/a" />
+            <parameter name="query6" value="搜牛财经搜索" />
+            
+            <!--oneDayPubnote-->
+            <!--搜牛首页，点击公告，搜索公告，点击一天内，看有没有最新公告，有就测试能不能打开-->
+            <parameter name="pubnote"    value="//*[@id='pubnote_bar']/a"/>
+            <parameter name="oneday"    value="//*[@id='filterTime']/li[1]/a"/>   
+            <parameter name="danrizuixin"    value="//*[@id='hidelist']/div[3]/h2/span/strong"/>     
+            <parameter name="firstpubnoto"    value="//*[@id='hidelist']/div[3]/h2/a"/>
+            
+            
+            <classes>
+                <class name="com.myhexin.testPubnote"/>
+                <methods>
+                    <include name="testFunds" />
+                    <include name="testClinkGuangGu" />
+                    <include name="testQuerySearch" />
+                    <include name="testClinkZhaiQuan" />
+                    <include name="QuerySearch3" />
+                    <include name="testNextPage" />
+                    <include name="testReturnToHome" />
+                    <include name="oneDayPubnote"/>
+                </methods>
+            </classes>
+        </test> <!-- Test -->
+    </suite> <!-- Suite -->
+</suites>

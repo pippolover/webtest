@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="testBBS" parallel="false">
+    
+  <test name="Test" preserve-order="true">
+      <parameter name="selenium.host" value="172.20.23.95" />
+      <parameter name="selenium.port" value="4444" />
+      <parameter name="selenium.browser" value="*firefox" />
+<!-- 	<parameter name="selenium.url" value="http://search.10jqka.com.cn/" /> -->
+
+      
+      <parameter name="openurl" value="/?tid=forum&amp;ts=1&amp;qs=1"/>
+      
+      <!-- testQuery -->
+      <parameter name="FirstResult" value="//*[@id='hidelist']/div[5]/h2"/>
+      
+      <!-- testResultnum -->
+      <parameter name="Resultnum" value="//*[@class='s_r_box']"/>
+      
+      <!-- testGubatime -->
+      <parameter name="updatetime" value="//*[@id='hidelist']/div[5]/ul/li[1]/span[3]"/>
+                                            
+       <!-- testguba -->
+       <parameter name="guba.xpath" value="//*[@id='queryfilter_category']/li[2]/a"/>
+       <parameter name="guba_result" value="//*[@id='hidelist']/div[5]/ul/li[1]/a"/>
+       
+       <!-- testluntan -->
+       <parameter name="luntan.xpath" value="//*[@id='queryfilter_category']/li[3]/a"/>
+       <parameter name="luntan_result" value="//*[@class='s_r_box']"/>
+    <classes>
+      <class name="com.myhexin.testBBS"/>
+       <methods>
+           <include name="testQuery"/>
+           <include name="testResultnum"/>
+           <include name="testguba"/>
+           <!--<include name="testGubatime"/>-->
+            <include name="testluntan"/>
+       </methods>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

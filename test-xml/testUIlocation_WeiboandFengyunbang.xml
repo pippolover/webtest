@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suites>
+    <suite name="UIlocation_Suite" parallel="tests" Thread-count="2">
+        <!-- 初始化的准备工作-->
+        <parameter name="selenium.host" value="172.20.23.95"/>
+        <parameter name="selenium.port" value="4444"/>
+        <parameter name="selenium.browser" value="*firefox"/>
+       <!--  <parameter name="selenium.url" value="http://search.10jqka.com.cn/"/> -->
+        
+
+
+       <!-- testweiboIndex_jiepan -->
+       <!-- 微博首页解盘按钮 -->
+       <parameter name="testweiboIndex_jiepan" value="//*[@id='weibof']/li[1]" />
+       <parameter name="testweiboIndex_jiepan_top" value="134" />
+       <parameter name="testweiboIndex_jiepan_left" value="343" />
+       
+       <!-- testweiboIndex_jigou -->
+       <!-- 微博首页机构按钮 -->      
+       <parameter name="testweiboIndex_jigou" value="//*[@id='weibof']/li[2]" />
+       <parameter name="testweiboIndex_jigou_top" value="134" />
+       <parameter name="testweiboIndex_jigou_left" value="419" />
+      
+       <!-- testweiboIndex_minjiangaoshou -->
+       <!-- 微博首页民间高手按钮 -->      
+       <parameter name="testweiboIndex_minjiangaoshou" value="//*[@id='weibof']/li[3]" />
+       <parameter name="testweiboIndex_minjiangaoshou_top" value="134" />
+       <parameter name="testweiboIndex_minjiangaoshou_left" value="495" /> 
+  
+       <!-- testweiboIndex_meitihui -->  
+       <!-- 微博首页媒体汇按钮 -->
+       <parameter name="testweiboIndex_meitihui" value="//*[@id='weibof']/li[4]" />
+       <parameter name="testweiboIndex_meitihui_top" value="134" />
+       <parameter name="testweiboIndex_meitihui_left" value="601" /> 
+       
+       <!-- testweiboIndex_mingrentang -->
+       <!-- 微博首页名人堂按钮 -->     
+       <parameter name="testweiboIndex_mingrentang" value="//*[@id='weibof']/li[5]" />
+       <parameter name="testweiboIndex_mingrentang_top" value="134" />
+       <parameter name="testweiboIndex_mingrentang_left" value="692" /> 
+       
+       <!-- testweiboIndex_fenxishi -->
+       <!-- 微博首页分析师按钮 -->
+       <parameter name="testweiboIndex_fenxishi" value="//*[@id='weibof']/li[6]" />
+       <parameter name="testweiboIndex_fenxishi_top" value="134" />
+       <parameter name="testweiboIndex_fenxishi_left" value="783" />
+       
+       <!-- testfengyunbang_main-->
+       <!-- 风云榜的整体位置 -->
+       <parameter name="testfengyunbang_main" value="//*[@id='kuaizhao']/div[3]/div" />
+       <parameter name="testfengyunbang_main_top" value="110" />
+       <parameter name="testfengyunbang_main_left" value="232" />
+       
+       <!-- testfengyunbang_mtzzfyb -->
+       <!-- 媒体转载风去榜位置   -->
+       <parameter name="testfengyunbang_mtzzfyb" value="//*[@id='kuaizhao']/div[3]/div/div[1]/img" />
+       <parameter name="testfengyunbang_mtzzfyb_top" value="110" />
+       <parameter name="testfengyunbang_mtzzfyb_left" value="232" />
+       
+       <!-- testfengyunbang_mrrmgjc -->
+       <!-- 每日热门关键词位置 -->
+       <parameter name="testfengyunbang_mrrmgjc" value="//*[@id='kuaizhao']/div[3]/div/div[2]/div/h3" />
+       <parameter name="testfengyunbang_mrrmgjc_top" value="110" />
+       <parameter name="testfengyunbang_mrrmgjc_left" value="902" />
+       
+       <!-- testfengyunbang_byplfyb -->
+       <!-- 博友评论风云榜位置 -->
+       <parameter name="testfengyunbang_byplfyb" value="//*[@id='kuaizhao']/div[3]/div/div[4]/img" />
+       <parameter name="testfengyunbang_byplfyb_top" value="463" />
+       <parameter name="testfengyunbang_byplfyb_left" value="232" />
+       
+       <!-- testfengyunbang_yzrdgjz -->
+       <!--一周热点关键字  -->
+       <parameter name="testfengyunbang_yzrdgjz" value="//*[@id='kuaizhao']/div[3]/div/div[5]/div/h3" />
+       <parameter name="testfengyunbang_yzrdgjz_top" value="463" />
+       <parameter name="testfengyunbang_yzrdgjz_left" value="902" />
+       
+       <!-- testfengyunbang_wmyxfyb -->
+       <!-- 网民影响风云榜位置 -->
+       <parameter name="testfengyunbang_wmyxfyb" value="//*[@id='kuaizhao']/div[3]/div/div[7]/img" />
+       <parameter name="testfengyunbang_wmyxfyb_top" value="817" />
+       <parameter name="testfengyunbang_wmyxfyb_left" value="232" />
+       
+       
+       <!--testfengyunbang_sszkgjz  -->
+       <!-- 上升最快关键字位置 -->
+       <parameter name="testfengyunbang_sszkgjz" value="//*[@id='kuaizhao']/div[3]/div/div[8]/div/h3" />
+       <parameter name="testfengyunbang_sszkgjz_top" value="817" />
+       <parameter name="testfengyunbang_sszkgjz_left" value="902" />
+       
+     <test name="testUIlocation_Fengyunbang" preserve-order="true">
+    <classes>
+    <class name="com.myhexin.testUIlocation_Fengyunbang"/>
+    <methods>
+    <include name="testfengyunbang_main"/>
+    <include name="testfengyunbang_mtzzfyb"/>
+    <include name="testfengyunbang_mrrmgjc"/>
+    <include name="testfengyunbang_byplfyb"/>
+    <include name="testfengyunbang_yzrdgjz"/>
+    <include name="testfengyunbang_wmyxfyb"/>
+    <include name="testfengyunbang_sszkgjz"/>
+    </methods>
+    </classes>
+    </test> 
+       <test name="testUIlocation_Weibo" preserve-order="true">
+            <classes>
+                <class name="com.myhexin.testUIlocation_Weibo"/>
+                <methods>
+                    <include name="testweiboIndex_jiepan"/>
+                    <include name="testweiboIndex_jigou"/>
+                    <include name="testweiboIndex_minjiangaoshou"/>
+                    <include name="testweiboIndex_meitihui"/>
+                    <include name="testweiboIndex_mingrentang"/>
+                    <include name="testweiboIndex_fenxishi"/>
+                </methods>
+            </classes>
+           </test>
+        
+    </suite> <!-- Suite -->
+</suites>

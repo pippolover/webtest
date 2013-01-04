@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="XuanGuClientSuite" parallel="tests" Thread-count="2">
+    <parameter name="selenium.host" value="172.20.23.95" />
+    <parameter name="selenium.port" value="4444" />
+    <parameter name="selenium.browser" value="*firefox" />
+<!--  <parameter name="selenium.url" value="http://search.10jqka.com.cn/" /> -->
+    <test name="testXuanGuClient" preserve-order="true" >
+    	
+    	
+    	
+    	
+     <!--testSearchBtn-->
+     <!--打开选股客户端，点击默认问句的执行选股，看没有跳转问句页-->
+      <parameter name="clienturl" value="/xuanguclient?source=client&amp;shunt=b"/>
+      <parameter name="auto" value="//*[@id='auto']@value"/>
+      <parameter name="searchbtn"  value="//*[@id='searchform']/input[7]"/>
+
+
+    <!--testFavoritBtn-->
+    <!--点击收藏问句,查持我的收藏中存不存在-->
+    <parameter name="favoritbtn"  value="//*[@id='favorit_btn']"/>
+    <parameter name="openfavoritbtn" value="//*[@id='open_favorit_btn']"/>
+    <parameter name="favorit" value="//*[@id='favorit_list_c']/li/a"/>
+
+
+    <!--testRemoveFavoritBtn-->
+    <!--再次点击输入框中的收藏按扭,查看我的收藏中还有没有问句存在-->
+    <parameter name="favoritcon" value="//*[@id='favorit_con_c']"/>
+
+   <!--testQuerySearch-->
+   <!--搜2012年11月09日股价小于2,查看有无结果-->
+   <parameter name="result" value="//*[@id='btn_list_bar']/li[1]"/>
+  
+<classes>
+        <class name="com.myhexin.testXuanGuClient"/>
+        <methods>
+       <include name="testSearchBtn"/>
+       <include name="testFavoritBtn"/>
+       <include name="testRemoveFavoritBtn"/>
+       <include name="testQuerySearch"/>
+ 
+
+
+
+      </methods>
+        </classes>
+    </test> <!-- Test -->
+</suite> <!-- Suite -->

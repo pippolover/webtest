@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Suite]">
+  <parameter name="selenium.url" value="http://search.10jqka.com.cn/"/>
+  <parameter name="selenium.browser" value="*firefox"/>
+  <parameter name="query" value="600000"/>
+  <parameter name="openUrl" value="/?tid=report&amp;ts=1&amp;qs=1#"/>
+  <parameter name="selenium.port" value="4444"/>
+  <parameter name="firstRlt" value="//div[@class=&quot;repeat-contain&quot;][1]/h2"/>
+  <parameter name="queryInputId" value="id=auto"/>
+  <parameter name="searchbtn" value="css=input.searchbtn"/>
+  <parameter name="selenium.host" value="172.20.23.95"/>
+  <test name="Test(failed)" preserve-order="true">
+    <parameter name="selenium.url" value="http://search.10jqka.com.cn/"/>
+    <parameter name="selenium.browser" value="*firefox"/>
+    <parameter name="openUrl" value="/?tid=report&amp;ts=1&amp;qs=1#"/>
+    <parameter name="query" value="600000"/>
+    <parameter name="selenium.port" value="4444"/>
+    <parameter name="queryInputId" value="id=auto"/>
+    <parameter name="firstRlt" value="//div[@class=&quot;repeat-contain&quot;][1]/h2"/>
+    <parameter name="searchbtn" value="css=input.searchbtn"/>
+    <parameter name="selenium.host" value="172.20.23.95"/>
+    <classes>
+      <class name="com.myhexin.TestReport">
+        <methods>
+          <include name="afterTest"/>
+          <include name="testFengyun" invocation-numbers="0"/>
+          <include name="beforeTest"/>
+        </methods>
+      </class> <!-- com.myhexin.TestReport -->
+    </classes>
+  </test> <!-- Test(failed) -->
+</suite> <!-- Failed suite [Suite] -->

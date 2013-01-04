@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="ReportSuite" parallel="false">
+    <parameter name="selenium.host" value="172.20.23.95" />
+    <parameter name="selenium.port" value="4444" />
+    <parameter name="selenium.browser" value="*firefox" />
+<!--  <parameter name="selenium.url" value="http://search.10jqka.com.cn/" /> -->
+    <test name="testReport" preserve-order="true">
+        <parameter name="openUrl" value="/?tid=report&amp;ts=1&amp;qs=1#" />
+        <parameter name="queryInputId" value="//*[@id='auto']" />
+        <parameter name="searchbtn" value="//*[@id='searchform']/input[6]" />
+        <parameter name="query" value="600000" />
+        <!-- 第一条结果xpath -->
+        <parameter name="firstRlt" value="//*[@id='hidelist']/div[5]/h2/a" />
+
+        <!--走势图相关xpath-->
+        <parameter name="Chart.locate" value="//*[@id='flash']"/>
+        <parameter name="clickbtn.locate" value="//a[@id='showflash']"/>
+
+        <!--过滤相关xpath-->
+        <parameter name="keyword.locate" value="//*[@id='hidelist']/div[5]/p[1]/a[2]@href"/>
+        <parameter name="resultnum.locate" value="//div[@class='repeat-contain']"/>
+        <classes>
+            <class name="com.myhexin.testReport"/>
+            <methods>
+                <include name="testQuery" />
+                <include name="test_TrendChart" />
+                <include name="test_Trend" />
+                <include name="test_Moremenu" />
+            </methods>
+        </classes>
+    </test> <!-- Test -->
+</suite> <!-- Suite -->

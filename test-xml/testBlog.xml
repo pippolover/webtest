@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suites>
+    <suite name="bolgSuite" parallel="false">
+        <!-- 初始化的准备工作-->
+        <parameter name="selenium.host" value="172.20.23.95"/>
+        <parameter name="selenium.port" value="4444"/>
+       <parameter name="selenium.browser" value="*firefox"/>
+<!--    <parameter name="selenium.url" value="http://search.10jqka.com.cn/"/>  -->
+        <test name="test_blog" preserve-order="true">
+
+            <!-- _test_WoDeGuanZhun -->
+            <!-- 进入博客首页,点击我的关注,看是否跳转-->
+            <parameter name="openUrl" value="/"/>
+            <parameter name="blog" value="//*[@id='blog_bar']/a" />
+            <parameter name="wdgz" value="//*[@id='blogConcernTab']/li[2]"/>
+            <parameter name="blogarea" value="//html/body/div[5]/div[1]/div/div[2]" />
+
+            <!-- test_ScxxCount -->
+            <!--判断市场显示的是不是七条 -->
+            <parameter name="scxxcount" value="//html/body/div[5]/div[2]/div[4]/ul/li/a"/>
+
+            <!-- test_TitleDe -->
+            <!-- 判断经济杂谈标题有没有重复-->
+            <parameter name="newxpath" value="//html/body/div[5]/div[2]/div[2]/ul"/>
+                                              
+
+            <!-- test_JiaGuanZhu -->
+            <!-- 判断鼠标移动到市场信息每一个标题的作者(博客名)上时,没有显示加类注 -->
+            <parameter name="authorxpath" value="//html/body/div[5]/div[2]/div[4]/ul/li[1]/span/a"/>
+            <parameter name="jiaguanzhu" value="//html/body/div[5]/div[2]/div[4]/ul/li[1]/span/span"/>
+
+            <!-- test_LinkGenduo -->
+            <!-- 点击名人名博中的更多,进入名人名博的博客页 -->
+            <parameter name="gendou" value="//*[@class='blog_main']//*[@class='blog_more fr aBlue nu song_font']"/>
+                                            
+            <parameter name="channel" value="//*[@id='hidelist']//*[@class='nav-foums']"/>
+
+            <!-- test_Count -->
+            <!-- 判断显示的博客新闻是不是10条 -->
+            <parameter name="allcount" value="//*[@id='_add']"/>
+
+            <!-- test_Syqz -->
+            <!-- 点击所有圈子,显示所有频道 -->
+            <parameter name="syqz" value="//*[@id='all-click']"/>
+            <parameter name="alllink" value="//*[@class='blog_type_con']/*/*/*"/>
+
+            <!-- test_ClickBksy -->
+            <!-- 点击(博客首页>所有圈子> 名人名博中的)搜牛首页,查看是否真的到了搜牛首页 -->
+            <parameter name="bksy" value="//*[@id='hidelist']/div[2]/p/a[1]"/>
+            <parameter name="jctj" value="//html/body/div[5]/div/ul/li"/>
+                                                
+
+            <!-- test_TuiJianBlog -->
+            <!-- 查看右侧的推荐博客,是否有重复的 -->
+            <parameter name="tjbkxpath" value="//*[@id='search_list_right']/ul"/>
+
+            <!-- test_BiaoTiRadio -->>
+            <!-- 点击标题,按钮,查看有无内容 -->>
+            <parameter name="biaotiradio" value="//*[@id='blog_radio_2']"/>
+                                                 
+            <parameter name="suoyou" value="//html/body/div[3]/div/div[2]/div[2]/a[2]"/>
+            
+
+            <!-- test_BlogNameRadio -->
+            <!-- 点击博主名铵钮,查看有无内容 -->
+            <parameter name="blognameradio" value="//*[@id='blog_radio_3']"/>
+            <parameter name="result" value="//html/body/div[3]/div/div[3]/div[3]/p"/>
+
+            <!-- test_BlogNameSearch -->>
+            <!-- 在搜索框输入"老科的投资" ,查看结果中的来自是否跟输入的一样-->>
+            <parameter name="from" value="//*[@id='luate_e5c6f46fa2187c8f']/h2/a[2]"/>
+
+            <!-- test_BiaoQianRadio -->
+            <!-- 点击标签铵钮,查看有无内容 -->
+            <parameter name="biaoqian" value="//*[@id='blog_radio_4']"/>
+
+            <!-- test_BiaoQianSearch -->
+            <!-- 在搜索框输600000,查看有无内容 -->
+
+            <!-- test_jrbksy -->
+            <!-- 点击进入博客首页>> ,查看是否真的到了博客首页> -->
+            <parameter name="tjrbksyxpath" value="//html/body/div[3]/div/div[2]/div[2]/a"/>
+                                           
+
+            <!-- test_BlogLogo -->
+            <!-- 点击博客的LOGO,查看是否真的到了博客首面 -->
+            <parameter name="logo" value="//*[@id='topnavCon']/div/a"/>
+
+            <!-- test_Blogloin -->
+            <!-- 点击搜牛博客的登录,查看是不是到同花顺用户登录面 -->
+            <parameter name="loin" value="//html/body/div[5]/div[1]/div/div[3]/div/a[1]"/>
+            <classes>
+                <class name="com.myhexin.testBlog"/>
+                <methods>
+                    <include name="test_WoDeGuanZhu"/>
+                    <include name="test_ScxxCount"/>
+                    <include name="test_TitleDe"/>
+                    <include name="test_JiaGuanZhu"/>
+                    
+                    
+                    
+                    
+                    <include name="test_LinkGenduo"/>
+                    <include name="test_Count"/>
+                    <include name="test_Syqz"/>
+                    <include name="test_CloseSyqz"/>
+                    <!-- <include name="test_ClickBksy"/> -->
+                    <include name="test_TuiJianBlog"/>
+                    <include name="test_BiaoTiRadio"/>
+                    <include name="test_BlogNameRadio"/>
+                    <!-- <include name="test_BlogNameSearch"/> -->
+                    <include name="test_BiaoQianRadio"/>
+                    <include name="test_BiaoQianSearch"/>
+                    <include name="test_jrbksy"/>
+                    <include name="test_BlogLogo"/>
+                    <include name="test_Blogloin"/>
+             
+                </methods>
+            </classes>
+        </test> <!-- Test -->
+    </suite> <!-- Suite -->
+</suites>

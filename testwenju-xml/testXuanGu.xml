@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="XuanGuSuite" parallel="tests" Thread-count="7">
+    <parameter name="selenium.host" value="172.20.23.95" />
+    <parameter name="selenium.port" value="4444" />
+    <parameter name="selenium.browser" value="*firefox" />
+<!--  <parameter name="selenium.url" value="http://search.10jqka.com.cn" /> -->
+    <test name="testXuanGu" preserve-order="true" >
+ 
+    <parameter name="url" value="/stockpick/search?preParams=&amp;ts=1&amp;f=1&amp;qs=1&amp;tid=stockpick&amp;w="/>
+<!--  <parameter name="txt" value="C:\Documents and Settings\Administrator\桌面\A.txt"/> --> -->
+
+<parameter name="txt" value="./testfile/test.txt"/>
+ 
+ 
+ 
+ 
+ 
+ 
+ <classes>
+        <class name="com.myhexin.wenju.testXuanGu"/>
+        <include name = "testwenjuhuigui"/>
+       
+       
+ 
+
+
+
+     
+        </classes>
+    </test> <!-- Test -->
+</suite> <!-- Suite -->   	

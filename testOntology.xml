@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- suites -->
+  <suite name="OntologySuite" parallel="false" >
+    <parameter name="selenium.host" value="172.20.23.95" />
+    <parameter name="selenium.port" value="4444" />
+    <parameter name="selenium.browser" value="*firefox" />
+    <!-- parameter name="selenium.url" value="http://search.10jqka.com.cn/" /-->
+    
+    
+    <test name="Test" >
+      <!-- testQueryResult -->
+      <parameter name="openUrl" value="/stockpick?tid=stockpick&amp;x=PaSQTPUAPTUWPXLWYYLUS&amp;y=42&amp;ts=1" />
+      <parameter name="queryInputId" value="id=auto" />
+      <parameter name="bottomqueryInput" value="//*[@class='stockpick_foot_search']/form/div/input" />
+      <parameter name="query" value="20120504股票价格小于2" />
+      <parameter name="searchbtn" value="css=input.searchbtn" />
+      <parameter name="bottomSearchbtn" value="//*[@class='stockpick_foot_search']/form/input[6]" />
+      <parameter name="stock1" value="京东方A" />
+      <parameter name="stock2" value="*ST长油" />
+      <parameter name="stock3" value="ST梅雁" />
+      
+      <!-- 返回结果中各个股票的股票名称xpath -->
+      <parameter name="stock1.xpath" value="//*[@id='offtblbdy']/tr/td[3]/a" />
+      <parameter name="stock2.xpath" value="//*[@id='offtblbdy']/tr[2]/td[3]/a" />
+      <parameter name="stock3.xpath" value="//*[@id='offtblbdy']/tr[3]/td[3]/a" />
+      
+      <!-- testResearch -->
+      <!-- 二次查询中各个按钮的xpath 以及输入框输入值--> 
+      <parameter name="questionBtn.locate" value="id=question_btn" />
+      <parameter name="questionSureBtn.locate" value="css=input.question_sure" />
+      <parameter name="compInput.locate" value="css=input.comp_val" />
+      <parameter name="compInput.value" value="3.000000" />
+      <parameter name="startData.locate" value="//*[@id='condParam00']/div/input" />
+      <parameter name="startData.value" value="2012-05-05" />
+      <parameter name="endData.locate" value="//*[@id='condParam02']/div/input" />
+      <parameter name="endData.value" value="2012-05-05" />
+      <parameter name="expectStock" value="*ST中华A" />
+      
+      <!-- testResultSearch -->
+      <!-- 在结果中查询， 结果查询按钮  返回结果个数的xpath -->
+      <parameter name="resultSearchBtn.locate" value="id=in_result_box" />
+      <parameter name="resultSearchInput.value" value="*市盈率大于30" />
+      <parameter name="resultSearchReturnNum.locate" value="//*[@class='stock_num']/em" />
+      
+      <!-- testLink -->
+      
+      <!-- 选股查询结果页面，第一支股票的股票代码和超链接的打开地址  -->
+      <parameter name="linkStockCode.xpath" value="//*[@id='offtblbdy']/tr/td[2]" />
+      <parameter name="stockLinkUrl.xpath" value="//*[@id='gostockpage']@href" />
+      <parameter name="stockLinkTitle" value="*ST中华A(000017)股票行情-同花顺" />
+      
+            
+      <!-- 正确错误按钮点击后灰掉-->
+      <parameter name="goodBtn.xpath" value="class=good_pick pick_btn" />
+      <parameter name="goodBtnGray.xpath" value="class=pick_btn good_pick_gray" />
+      <parameter name="badBtnGray.xpath" value="class=pick_btn bad_pick_gray" />
+      
+      <!-- 反馈链接xpath-->
+      <parameter name="feedbackLink.xpath" value="id=rightFeedbackBar" />
+      <parameter name="feedbackbbs.xpath" value="//*[@id='gobbs1']@href" />
+      <parameter name="suggest.xpath" value="id=suggestion" />
+      <parameter name="contact.xpath" value="name=qq" />
+      <parameter name="name.xpath" value="name=name" />
+      <parameter name="feedbackSubmit.xpath" value="id=fbSubmit" />
+      <parameter name="feedbackOver.xpath" value="id=rightFeedbackBar" />
+      
+      
+      <!-- bbs 链接xpath -->
+      <parameter name="bbsLink.xpath" value="//*[@id='gobbs2']@href" />
+      
+      <classes>
+        <class name="com.myhexin.TestOntology"/>
+          <methods>
+            <include name="testQueryResult" />
+            <include name="testBottomSearch" />
+            <include name="testResearch" />
+            <include name="testResultSearch" />
+            <include name="testStockLinkAdd" />
+            <include name="testBtnGray" />
+            <include name="testFeedback" />
+            <include name="testStockLink" />
+            <include name="testBbsLink" />
+          </methods>
+      </classes>
+    
+    </test> <!-- Test -->
+  </suite> <!-- Suite -->
+<!-- /suites -->

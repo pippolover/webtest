@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="NewsSuite" parallel="false">
+  <parameter name="selenium.host" value="172.20.23.95" />
+  <parameter name="selenium.port" value="4444" />
+  <parameter name="selenium.browser" value="*firefox" />
+  <!-- parameter name="selenium.url" value="http://search.10jqka.com.cn/?tid=news&amp;ts=1&amp;qs=1" /-->
+    
+  <test name="Test">
+    <!-- 新闻首页 -->
+    <parameter name="queryInput.xpath" value="id=auto" />
+    <parameter name="query" value="浦发银行" />
+    <parameter name="searchbtn.xpath" value="css=input.searchbtn" />
+    <parameter name="newsSelectBtn.xpath" value="//*[@id='sTidnews']" />
+    
+    <!-- 重要新闻 -->
+    <parameter name="ImportantNews.xpath" value="//*[@class='stock_name']" />
+   
+    
+     <!-- 新闻个数 -->
+    <parameter name="News.xpath" value="//*[@class='repeat-contain']" />
+    
+    <!-- 快照 -->
+    <!-- 快照 地址-->
+    <parameter name="snapTitle.xpath" value="//html/body/div[2]/div/div/div[4]/table/tbody/tr/td[2]/h2/a" />
+    <parameter name="snapUid.xpath" value="//html/body/div[2]/div/div/div[4]@id" />
+    <parameter name="snapUrl.xpath" value="//*[@id='snapshot1']@href" />
+    
+    <!-- 图片新闻个数-->
+    <parameter name="snapPicBox.xpath" value="//*[@id='imgNewsBox']/h3/span[2]" />
+    <parameter name="snapPic.xpath" value="//*[@class='pic_box']" />
+   
+    <!-- 原文链接地址-->
+    <parameter name="snapTopRawLink.xpath" value="//*[@id='ywlj']@href" />
+    <parameter name="snapBottomRawLink.xpath" value="//*[@id='kuaizhao']/div[1]/div[2]/div[7]/p/a[1]@href" />
+    
+    
+    <classes>
+      <class name="com.myhexin.TestNews"/>
+          <methods>
+            <include name="testImportantNews" />
+            <include name="testResultList" />
+            <include name="testSnapAdd" />
+            <include name="testPicNews" />
+            <include name="testRawNewsLink" />
+          </methods>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

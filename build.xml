@@ -1,0 +1,46 @@
+<project name="Selenium Grid Distribution" basedir=".">
+
+  <description>Selenium Grid Distribution</description>
+  <property file="${basedir}/project.properties"/>
+    
+  <property name="testng.dir" value="${basedir}/lib/testng" />
+  <property name="selenium.dir" value="${basedir}/lib/selenium" />
+  <property name="src.dir" value="${basedir}/src/com/myhexin" />
+  <property name="classes.dir" value="${basedir}/bin" />
+  <property name="selenium.url" value="http://search.10jqka.com.cn" />
+  <property name="selenium.newsUrl" value="http://search.10jqka.com.cn/?tid=news&amp;ts=1&amp;qs=1" />
+  <property name="selenium.infoUrl" value="http://search.10jqka.com.cn/?tid=info&amp;ts=1&amp;qs=1" />
+	
+  <taskdef resource="testngtasks" classpath="${testng.dir}/testng.jar" /> 
+	
+  <path id="demo.classpath">
+	   <fileset dir="${testng.dir}">
+	      <include name="*.jar"/>
+	   </fileset>
+	   <fileset dir="${selenium.dir}">
+	      <include name="*.jar"/>
+	   </fileset>
+	   <pathelement path="${java.class.path}/"/>
+  	   <pathelement path="${classes.dir}/"/>
+   </path>
+	
+   <target name="compile" description="compile the source " >
+	   <!-- Compile the java code from ${src} into ${build} -->
+       <mkdir dir="${classes.dir}" />
+	   <javac classpathref="demo.classpath" srcdir="${src.dir}" destdir="${classes.dir}"/>
+   </target>
+
+   <!-- RUN TESTS --> 
+   <target name="run-demo-in-parallel" description="Run Selenium tests in parallel" depends="compile">
+	   <java classpathref="demo.classpath"
+	        classname="org.testng.TestNG"
+	        failonerror="true">
+	   	    <sysproperty key="selenium.url" value="${selenium.url}"/>
+	   	    <sysproperty key="selenium.newsUrl" value="${selenium.newsUrl}"/>
+	   	    <sysproperty key="selenium.infoUrl" value="${selenium.infoUrl}"/>
+	   	    <arg value="${basedir}/testng.xml"/>
+	    </java>
+	  </target>
+
+	
+</project>

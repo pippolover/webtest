@@ -1,0 +1,112 @@
+package com.myhexin;
+
+//import static com.thoughtworks.selenium.grid.tools.ThreadSafeSeleniumSessionStorage.closeSeleniumSession;
+//import static com.thoughtworks.selenium.grid.tools.ThreadSafeSeleniumSessionStorage.session;
+import  com.thoughtworks.selenium.Selenium;
+import com.thoughtworks.selenium.DefaultSelenium;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
+import org.testng.annotations.Test;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.Parameters;
+
+
+
+public class TestNews {
+	public static final String TIMEOUT = "30000";
+	private static Selenium sel;
+    @Test
+    @Parameters ({ "queryInput.xpath", "query", "searchbtn.xpath", "newsSelectBtn.xpath", "ImportantNews.xpath"})
+    public void testImportantNews(String queryInput, String query, String searchBth, String newsSelectBtn, 
+    		        String ImportantNewsXpath) {
+        sel.open("/"); 
+	    sel.type(queryInput, query);
+	    sel.click(searchBth);
+	    sel.waitForPageToLoad(TIMEOUT);
+	        
+	    //System.out.println(sel.getTitle());
+	    sel.click(newsSelectBtn);
+	    sel.waitForPageToLoad(TIMEOUT);
+	    //System.out.println(sel.getTitle());
+	    
+	    
+	    String expectImportantNewsTitle = query;
+	    String importantNewsTitle = sel.getText(ImportantNewsXpath);
+	    System.out.println("重要新闻回顾预期：" + expectImportantNewsTitle + " 实际：" + importantNewsTitle);
+	    assertEquals(importantNewsTitle, expectImportantNewsTitle);
+	     
+    }
+    
+    @Test
+    @Parameters ({ "News.xpath"})
+    public void testResultList(String newsXpath) {
+        Number resultsNum = sel.getXpathCount(newsXpath);
+	    System.out.println("预期新闻条数：11 " + "实际新闻条数：" + resultsNum);
+	    assertEquals(resultsNum.intValue(), 11);
+	   
+    }
+    
+    @Test
+    @Parameters ({ "snapTitle.xpath", "snapUid.xpath", "snapUrl.xpath"})
+    public void testSnapAdd(String snapTitleXpath, String snapUidXpath, String snapUrlXpath) {
+       String expectSnapTitle = sel.getText(snapTitleXpath) ;
+  	   String uid = sel.getAttribute(snapUidXpath).split("_")[1];
+  	   String snapUrl = sel.getAttribute(snapUrlXpath);
+  	   String SnapUrlHead = "http://search.10jqka.com.cn/snapshot/news/";
+  	   String expectSnapUrl = SnapUrlHead + uid + ".html";
+  	   System.out.println("快照地址预期： " + expectSnapUrl + " 实际：" + snapUrl);
+  	   assertTrue(expectSnapUrl.contains(snapUrl));
+  	   sel.open(snapUrl);
+    }
+    
+    @Test
+    @Parameters ({ "snapPicBox.xpath", "snapPic.xpath"})
+    public void testPicNews(String snapPicBox, String snapPic) {
+       
+       String imageNewsBox = "";
+  	   try{
+  		   imageNewsBox = sel.getText(snapPicBox);
+  	   }catch(Exception e){
+  		   System.out.println();
+  	   }
+  	   if (imageNewsBox.equals("图片新闻")){
+  		   
+  		   Number pictureBoxNum = sel.getXpathCount(snapPic);
+  		   System.out.println("图片新闻的个数为：" + pictureBoxNum.toString());
+  		   assertTrue(pictureBoxNum.intValue() <= 4);
+  	   }
+  	   
+    }
+    
+    @Test
+    @Parameters ({ "snapTopRawLink.xpath", "snapBottomRawLink.xpath"})
+    public void testRawNewsLink(String topRawLink, String bottomRawLink) {
+       System.out.println(sel.getTitle());
+       String topLink = sel.getAttribute(topRawLink);
+  	   String bottomLink = sel.getAttribute(bottomRawLink);
+  	   System.out.println("顶部原文链接的地址为：" + topLink + "底部原文链接的地址为" + bottomLink );
+  	   assertEquals(topLink, bottomLink);
+  	   
+	   
+    }
+    @BeforeTest
+    @Parameters ({ "selenium.host", "selenium.port", "selenium.browser", "selenium.newsUrl"})
+    public void beforeTest(String host, String port, String browser, String url) {
+  	    System.out.println("Before test"); 
+	    System.out.println(host);
+	    Integer Dport = Integer.parseInt(port);
+	    sel = new DefaultSelenium(host, Dport, browser, url);
+	    //startSeleniumSession(host, Dport, browser, url); 
+	    sel.start();
+        sel.setTimeout(TIMEOUT);
+      
+    }
+
+    @AfterTest
+    public void afterTest() {
+	    System.out.println("After test");
+        sel.stop(); 
+    }
+
+}

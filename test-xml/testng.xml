@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="MainSuite"  parallel="classes" thread-count="7">
+    <!-- parameter name="selenium.url" value="http://search.10jqka.com.cn/" / -->
+    <suite-files>
+       
+        <suite-file path="./testNews.xml" />
+    <suite-file path="./testOntology.xml" />
+        <suite-file path="./testInfoyidong.xml" />
+        <suite-file path="./testInfotrigger.xml" />
+        <suite-file path="./testPubnote.xml" />
+        <suite-file path="./testReport.xml" />
+        <suite-file path="./testBugfree.xml"/>
+        <suite-file path="./testBBS.xml"/>
+        <suite-file path="./testBlog.xml"/>
+        <suite-file path="./testSouNiu.xml"/>
+        <suite-file path="./testUIlocation.xml"/>
+        <suite-file path="./testminipop.xml"/>
+        <suite-file path="./testUIlocation_WeiboandFengyunbang.xml"/>
+        <suite-file path="./testWeibo.xml"/>
+        <suite-file path="./testXuanGuClient.xml"/>
+    </suite-files>
+</suite> <!-- Suite -->

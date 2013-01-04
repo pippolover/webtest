@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="MainSuite"  parallel="classes" thread-count="2">
+    <!-- parameter name="selenium.url" value="http://search.10jqka.com.cn/" / -->
+    <suite-files>
+        <suite-file path="./testnews.xml" />
+        <suite-file path="./testOntology.xml" />
+        <suite-file path="./testInfo.xml" />
+    </suite-files>
+</suite> <!-- Suite -->
+
+
